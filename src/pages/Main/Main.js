@@ -1,5 +1,7 @@
+import { MainImg } from './Main.styled';
+
 export const Main = () => {
     return (
-        <><div></div></>
+        <><MainImg></MainImg></>
     )
 }
