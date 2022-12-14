@@ -1,6 +1,7 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Suspense } from "react";
-import { HeaderContainer, HeaderLeft, Header } from './SharedLayout.styled';
+import {UserInfo} from '../UserInfo/UserInfo'
+import { HeaderContainer, HeaderLeft, Header, NavLinkStyled, NavLinkRight, SignUpButton, } from './SharedLayout.styled';
 
 const SharedLayout = () => {
     return (
@@ -10,14 +11,14 @@ const SharedLayout = () => {
             <HeaderLeft>
               <h2>ToCreator</h2>
               <nav>
-                <NavLink to="/">Головна</NavLink>
-                <NavLink to="/play">Грати</NavLink>
-                <NavLink to="/profile">Мій профіль</NavLink>
+                <NavLinkStyled to="/">Головна</NavLinkStyled>
+                <NavLinkStyled to="/play">Грати</NavLinkStyled>
               </nav>
             </HeaderLeft>
             <div>
-              <NavLink to="/help">Як грати</NavLink>
-              <button>Увійти</button>
+              <NavLinkRight to="/help">Як грати</NavLinkRight>
+              <SignUpButton type="button">Увійти</SignUpButton>
+              <UserInfo/>
             </div>  
           </HeaderContainer>
         </Header>

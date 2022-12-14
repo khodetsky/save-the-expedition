@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
 margin-left: auto;
@@ -11,9 +12,10 @@ align-items: center;
 justify-content: space-between;
 position: absolute;
 
+font-family: 'Raleway', sans-serif;
 font-weight: 500;
 font-size: 16px;
-line-height: 22px;` 
+line-height: 22px;`
 
 export const HeaderLeft = styled.div`
 align-items: center;
@@ -25,3 +27,39 @@ margin-right: auto;
 width: 1280px;
 position: relative;
 `
+
+export const NavLinkStyled = styled(NavLink)`
+text-decoration: none;
+margin-left: 30px;
+color: #FFFFFF;
+
+:hover, :focus {
+    color: #000000;
+};`
+
+export const NavLinkRight = styled(NavLink)`
+text-decoration: none;
+margin-right: 30px;
+color: #FFFFFF;
+
+:hover, :focus {
+    color: #000000;
+};`
+
+export const SignUpButton = styled.button`
+border: 1px solid #FFFFFF;
+border-radius: 25px;
+padding: 9px 18px;
+
+font-family: 'Raleway', sans-serif;
+font-weight: 500;
+font-size: 16px;
+line-height: 22px;
+
+background: none;
+color: #FFFFFF;
+
+:hover, :focus {
+    color: #000000;
+    border-color: #000000;
+};`
