@@ -1,22 +1,50 @@
-import { ButtonStyled, UserButtonArrow, UserInfoBox, LinkToProfile, MenuExitButton } from './UserInfo.styled'
+import { ButtonStyled, UserButtonArrow, UserInfoBox, LinkToProfile, MenuExitButton, MenuBackdrop, ButtonOpenMenu } from './UserInfo.styled'
+import { useState, useEffect } from 'react';
 
 export const UserInfo = () => {
-    function handleButtonClick() {
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+    const [backdropIsOpen, setBackdropIsOpen] = useState(false);
 
+    function handleButtonClick() {
+        if (!menuIsOpen) {
+            setMenuIsOpen(true);
+            setBackdropIsOpen(true);
+        } else {
+            setMenuIsOpen(false);
+        setBackdropIsOpen(false);
+        }
+    };
+
+    function handleBackdropClick() {
+        if (menuIsOpen) {
+            setMenuIsOpen(false);
+            setBackdropIsOpen(false);
+        }
     }
 
     return (
         <>
             <ButtonStyled type="button" onClick={handleButtonClick}>
-                Name
+                Oleksandr
                 <UserButtonArrow>
                     <use href=""></use>
                 </UserButtonArrow>
             </ButtonStyled>
-            <UserInfoBox>
-                <LinkToProfile to="/profile">Мій профіль</LinkToProfile>
-                <MenuExitButton type="button">Вийти</MenuExitButton >
-            </UserInfoBox>
+            {menuIsOpen && (
+                <>
+                    <UserInfoBox>
+                        <ButtonOpenMenu type="button" onClick={handleButtonClick}>
+                            Oleksandr
+                            <UserButtonArrow>
+                                <use href=""></use>
+                            </UserButtonArrow>
+                        </ButtonOpenMenu>
+                        <LinkToProfile to="/profile">Мій профіль</LinkToProfile>
+                        <MenuExitButton type="button">Вийти</MenuExitButton >
+                    </UserInfoBox>
+                    <MenuBackdrop onClick={handleBackdropClick}></MenuBackdrop>
+                </>
+            )}
         </>
     )
 }
