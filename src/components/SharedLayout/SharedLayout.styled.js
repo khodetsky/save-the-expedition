@@ -32,6 +32,7 @@ export const NavLinkStyled = styled(NavLink)`
 text-decoration: none;
 margin-left: 30px;
 color: #FFFFFF;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 :hover, :focus {
     color: #000000;
@@ -41,6 +42,7 @@ export const NavLinkRight = styled(NavLink)`
 text-decoration: none;
 margin-right: 30px;
 color: #FFFFFF;
+transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 :hover, :focus {
     color: #000000;
@@ -58,8 +60,16 @@ line-height: 22px;
 
 background: none;
 color: #FFFFFF;
+transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-:hover, :focus {
-    color: #000000;
-    border-color: #000000;
-};`
+    :hover, :focus {
+        color: #000000;
+        border-color: #000000;
+    };
+`
+
+export const HeaderRightBox = styled.div`
+display: flex;
+align-items: center;
+`

@@ -3,7 +3,10 @@ import { Suspense } from "react";
 import { UserInfo } from '../UserInfo/UserInfo';
 import { useState } from 'react';
 import {AutorizationModal} from '../AutorizationModal/AytorizationModal'
-import { HeaderContainer, HeaderLeft, Header, NavLinkStyled, NavLinkRight, SignUpButton, } from './SharedLayout.styled';
+import {
+  HeaderContainer, HeaderLeft, Header, NavLinkStyled,
+  NavLinkRight, SignUpButton, HeaderRightBox
+} from './SharedLayout.styled';
 
 const SharedLayout = () => {
   const [autorizationModalIsOpen, setAutorizationModalIsOpen] = useState(false);
@@ -27,11 +30,11 @@ const SharedLayout = () => {
                 <NavLinkStyled to="/play">Грати</NavLinkStyled>
               </nav>
             </HeaderLeft>
-            <div>
+            <HeaderRightBox>
               <NavLinkRight to="/help">Як грати</NavLinkRight>
               <SignUpButton type="button" onClick={openAutorizationModal}>Увійти</SignUpButton>
               <UserInfo/>
-            </div>  
+            </HeaderRightBox>  
           </HeaderContainer>
           {autorizationModalIsOpen && (<AutorizationModal closeModal={closeAutorizationModal} />)}
         </Header>

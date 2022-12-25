@@ -39,7 +39,8 @@ export const InputStyled = styled(Field)`
     margin-top: 35px;
     padding: 10px 6px;
     outline: none;
-    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);    
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
     &:focus {
       border-color: #7B61FF;
     }
@@ -100,6 +101,7 @@ export const SignInBtn = styled.button`
     border-radius: 8px;
 
     box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover, :focus {
         background-color: #7F56D9;
@@ -114,6 +116,7 @@ export const RegistrationBtn = styled.button`
     color: rgb(85, 26, 139);
     text-decoration: underline;
     cursor: pointer;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover, :focus {
         color: rgb(67 28 102);

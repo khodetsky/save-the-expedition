@@ -1,5 +1,19 @@
+import { Battery } from '../../components/Battery/Battery';
+import { Background, BatteryBox, InfoPlayBox, DataPlayBox } from './Play.styled';
+
 export const Play = () => {
+
     return (
-        <>2</>
+        <>
+            <Background>
+                <InfoPlayBox>
+                    <DataPlayBox>
+                    </DataPlayBox>
+                    <BatteryBox>
+                        <Battery/>
+                    </BatteryBox>
+                </InfoPlayBox>
+            </Background>
+        </>
     )
 }

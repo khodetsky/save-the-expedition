@@ -1,5 +1,9 @@
-import { ButtonStyled, UserButtonArrow, UserInfoBox, LinkToProfile, MenuExitButton, MenuBackdrop, ButtonOpenMenu } from './UserInfo.styled'
+import {
+    ButtonStyled, UserButtonArrow, UserInfoBox, LinkToProfile,
+    MenuExitButton, MenuBackdrop, MenuTriangleBox, UserButtonIcon
+} from './UserInfo.styled'
 import { useState } from 'react';
+import svgSprite from '../../images/sprite.svg'
 
 export const UserInfo = () => {
     const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -23,18 +27,16 @@ export const UserInfo = () => {
             <ButtonStyled type="button" onClick={handleButtonClick}>
                 Oleksandr
                 <UserButtonArrow>
-                    <use href=""></use>
+                    {menuIsOpen ? <UserButtonIcon href={svgSprite + '#errow-up'}></UserButtonIcon>
+                    : <UserButtonIcon href={svgSprite + '#errow-down'}></UserButtonIcon>}
                 </UserButtonArrow>
             </ButtonStyled>
             {menuIsOpen && (
                 <>
+                    <MenuTriangleBox width="30" height="20">
+                        <polygon points="0,20 15,0 30,20" fill="#FFFFFF" stroke="none" />
+                    </MenuTriangleBox>
                     <UserInfoBox>
-                        <ButtonOpenMenu type="button" onClick={handleButtonClick}>
-                            Oleksandr
-                            <UserButtonArrow>
-                                <use href=""></use>
-                            </UserButtonArrow>
-                        </ButtonOpenMenu>
                         <LinkToProfile to="/profile">Мій профіль</LinkToProfile>
                         <MenuExitButton type="button">Вийти</MenuExitButton >
                     </UserInfoBox>

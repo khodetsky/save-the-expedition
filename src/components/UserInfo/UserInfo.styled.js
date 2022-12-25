@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 
 export const ButtonStyled = styled.button`
 position: relative;
-width: 150px;
 border: 1px solid #FFFFFF;
 border-radius: 25px;
 padding: 9px 18px;
+display: flex;
+align-items: center;
+justify-content: center;
 
 font-family: 'Raleway', sans-serif;
 font-weight: 500;
@@ -16,45 +18,70 @@ line-height: 22px;
 background: none;
 color: #FFFFFF;
 cursor: pointer;
+transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-:hover, :focus {
-    color: #000000;
-    border-color: #000000;
-};`
+    :hover, :focus {
+        color: #000000;
+        border-color: #000000;
+    };
+`
 
 export const UserButtonArrow = styled.svg`
-width: 0;
-height: 0;`
+margin-left: 5px;
+width: 15px;
+height: 15px;
+`
+
+export const UserButtonIcon = styled('use')`
+stroke: none;
+fill: #FFFFFF;
+width: 15px;
+height: 15px;
+transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    ${ButtonStyled}:hover &, ${ButtonStyled}:focus & {
+        fill: #000000;
+    };
+`
+
+export const MenuTriangleBox = styled.svg`
+position: absolute;
+z-index: 3;
+left: 1012px;
+top: 91px;
+`
 
 export const UserInfoBox = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 z-index: 3;
-left: 915px;
-top: 50px;
+left: 950px;
+top: 100px;
 
-border-radius: 20px;
+border-radius: 8px;
+padding: 10px 10px 5px 10px;
 position: absolute;
-width: 150px;
-height: 103px;
 
-background-color: #FFFFFF`
+background-color: #FFFFFF;
+`
 
 export const LinkToProfile = styled(Link)`
-text-decoration: none;
 
 font-family: 'Raleway', sans-serif;
 font-weight: 500;
 font-size: 16px;
 line-height: 22px;
+text-decoration: none;
 
-color: #000000;`
+color: #000000;
+`
 
 export const MenuExitButton = styled.button`
 border: none;
 background: none;
-padding: 9px 0;
+padding: 5px 5px;
 
 font-family: 'Raleway', sans-serif;
 font-weight: 700;
@@ -62,7 +89,8 @@ font-size: 16px;
 line-height: 22px;
 
 color: #000000;
-cursor: pointer;`
+cursor: pointer;
+`
 
 export const MenuBackdrop = styled.div`
 width: 100vw;
@@ -71,25 +99,5 @@ transition-property: opacity,visibility;
 position: fixed;
 z-index: 2;
 top: 0;
-left: 0;`
-
-export const ButtonOpenMenu = styled.button`
-position: relative;
-z-index: 4;
-width: 150px;
-border: none;
-border-radius: 25px;
-padding: 9px 18px;
-
-font-family: 'Raleway', sans-serif;
-font-weight: 500;
-font-size: 16px;
-line-height: 22px;
-
-background: none;
-color: #000000;
-cursor: pointer;
-
-:hover, :focus {
-    color: #000000;
-};`
+left: 0;
+`
