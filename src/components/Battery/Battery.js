@@ -19,6 +19,8 @@ export const Battery = () => {
             case 1:
                 arr[1].classList.add('scale');
                 break;
+            default:
+                arr.forEach(item => { item.classList.toggle('scale') });
         }
     }, [batteryCharge]);
 
