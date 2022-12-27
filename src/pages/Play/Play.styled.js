@@ -7,7 +7,7 @@ export const Background = styled.div`
     width: 1280px;
     height: 1280px;
 
-    background-color: #3f404a;
+    background-color: #4c4f68;
 `
 
 export const InfoPlayBox = styled.div`
@@ -21,13 +21,18 @@ export const InfoPlayBox = styled.div`
 export const DataPlayBox = styled.div`
     width: 60%;
     height: 300px;
+    padding: 20px;
 
-    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 `
 
 export const BatteryBox = styled.div`
     width: 40%;
     height: 300px;
 
-    // background-color: red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `
