@@ -11,7 +11,10 @@ export const Background = styled.div`
 `
 
 export const InfoPlayBox = styled.div`
+    position: relative;
+    z-index: 3;
     display: flex;
+    background-color: #4c4f68;
 
     padding-top: 100px;
     padding-left: 215px;

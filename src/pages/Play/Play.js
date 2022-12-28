@@ -3,9 +3,12 @@ import { Background, BatteryBox, InfoPlayBox, DataPlayBox } from './Play.styled'
 import { DescriptionContainer } from '../../components/DescriptionContainer/DescriptionContainer';
 import { RobotMessageContainer } from '../../components/RobotMessageContainer/RobotMessageContainer';
 import { ButtonGrid } from '../../components/ButtonGrid/ButtonGrid';
+import { GuessedWordContainer } from '../../components/GuessedWordContainer/GuessedWordContainer';
 import robotImage from '../../images/robot.png';
 
 export const Play = () => {
+    let word = 'барабан';
+
     function robotMessage() {
         let message = 'fdnvjdnfvo vjnjvnfn njvnfjnfv njvnvf jnfjvn j jfvnj nfv dnvjdnfvo vjnjvnfn njvnfjnfv njvnvf jnfjvn j jfvnj nfv';
         return message;
@@ -24,6 +27,7 @@ export const Play = () => {
                         <Battery/>
                     </BatteryBox>
                 </InfoPlayBox>
+                <GuessedWordContainer guessedWord={word} />
                 <ButtonGrid/>
             </Background>
         </>
