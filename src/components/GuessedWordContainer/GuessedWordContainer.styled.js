@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const LettersList = styled.ul`
-    position: reletive;
+    position: relative;
     z-index: 1;
 
     display: flex;

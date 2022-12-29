@@ -5,30 +5,40 @@ import { RobotMessageContainer } from '../../components/RobotMessageContainer/Ro
 import { ButtonGrid } from '../../components/ButtonGrid/ButtonGrid';
 import { GuessedWordContainer } from '../../components/GuessedWordContainer/GuessedWordContainer';
 import robotImage from '../../images/robot.png';
+import { useState, useEffect } from "react";
+
 
 export const Play = () => {
-    let word = 'барабан';
+    const [lettersCardArr, setLettersCardArr] = useState([]);
+    const [batteryCharge, setBatteryCharge] = useState(5);
+
+    let word = 'таракан';
 
     function robotMessage() {
-        let message = 'fdnvjdnfvo vjnjvnfn njvnfjnfv njvnvf jnfjvn j jfvnj nfv dnvjdnfvo vjnjvnfn njvnfjnfv njvnvf jnfjvn j jfvnj nfv';
+        let message = 'Я вірю, що ви зможете це осилити))';
         return message;
     }
+
+    useEffect(() => {
+        const arr = document.querySelectorAll('#letterCard');
+        setLettersCardArr(arr);
+    }, [])
 
     return (
         <>
             <Background>
                 <InfoPlayBox>
                     <DataPlayBox>
-                        <DescriptionContainer>Asrejnekreree Asrejnekrj eduhvuivi ejfo ernf eree Asrejneeree </DescriptionContainer>
+                        <DescriptionContainer>Ця істота є одним із символів Мексики. Про цих істот навіть існує популярний мультик</DescriptionContainer>
                         <RobotMessageContainer message={robotMessage()} />
                     </DataPlayBox>
                     <BatteryBox>
                         <img src={robotImage} alt="Робот" width={240} height={240} />
-                        <Battery/>
+                        <Battery batteryCharge={batteryCharge} />
                     </BatteryBox>
                 </InfoPlayBox>
                 <GuessedWordContainer guessedWord={word} />
-                <ButtonGrid/>
+                <ButtonGrid batteryCharge={batteryCharge} setBatteryCharge={setBatteryCharge} cardArr={lettersCardArr} />
             </Background>
         </>
     )

@@ -36,6 +36,6 @@ export const BatteryBox = styled.div`
     height: 300px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 `

@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BatteryBox, BatteryElement } from './Battery.styled';
 
-export const Battery = () => {
-    const [batteryCharge, setBatteryCharge] = useState(5);
+export const Battery = ({batteryCharge}) => {
 
     useEffect(() => {
         const arr = document.querySelectorAll('#charges');
@@ -24,11 +23,6 @@ export const Battery = () => {
         }
     }, [batteryCharge]);
 
-    const decrimentBtn = () => {
-        setBatteryCharge(batteryCharge - 1)
-    }
-    
-
     const batteryElements = () => {
         let array = [];
         for (let i = 0; i < 5; i++) {
@@ -38,11 +32,8 @@ export const Battery = () => {
     }
 
     return (
-        <>
-            <button type='button' onClick={decrimentBtn} style={{width: 50, height: 20}}></button>
-            <BatteryBox>
-                {batteryElements()}
-            </BatteryBox>
-        </>
+        <BatteryBox>
+            {batteryElements()}
+        </BatteryBox>
     )
 }

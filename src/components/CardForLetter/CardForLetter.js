@@ -2,7 +2,7 @@ import { Card, LeftPartCard, RightPartCard, Text, RedLine } from './CardForLette
 
 export const CardForLetter = ({ letter }) => {
     return (
-        <Card>
+        <Card id='letterCard'>
             <LeftPartCard>
                 <RedLine/>
             </LeftPartCard>

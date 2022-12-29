@@ -11,6 +11,7 @@ display: flex;
 align-items: center;
 justify-content: space-between;
 position: absolute;
+z-index: 4;
 
 font-family: 'Raleway', sans-serif;
 font-weight: 500;

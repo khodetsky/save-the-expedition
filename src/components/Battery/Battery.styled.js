@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const BatteryBox = styled.div`
-    width: 70px;
+    width: 62px;
     height: 223px;
     border-radius: 30px;
     border: 3px solid black;

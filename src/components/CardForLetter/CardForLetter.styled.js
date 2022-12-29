@@ -32,13 +32,16 @@ const redLineAnimation = keyframes`
     0% {
         opacity: 1;
         transform: scaleY(0);
-        background-color: red;
+        background-color: #fafd4a;
     }
 
     50% {
         opacity: 1;
         transform: scaleY(84);
-        background-color: red;
+    }
+
+    60% {
+        background-color: #ff8100;
     }
 
     100% {
@@ -51,12 +54,16 @@ const redLineAnimation = keyframes`
 const textAnimation = keyframes`
     0% {
       opacity: 0;
-      color: red;
+      color: #FFFFFF;
     }
 
     40% {
-      opacity: 1;
-      color: red;
+        opacity: 1;
+      color: #fafd4a;
+    }
+
+    70% {
+      color: #ff8100;
     }
 
     100% {
@@ -72,6 +79,7 @@ export const Card = styled.div`
     height: 90px;
     border-radius: 8px;
     background-color: #FFFFFF;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px 0px, rgba(0, 0, 0, 0.22) 0px 15px 12px 0px;
 
     display: flex;
     align-items: center;
@@ -88,9 +96,9 @@ export const Text = styled.p`
     z-index: 3;
     opacity: 0;
 
-    ${Card}:hover &, ${Card}:focus & {
-        animation: ${textAnimation} 4s cubic-bezier(0.4, 0, 0.2, 1) forwards 2500ms;
-    };
+    &.guessed {
+        animation: ${textAnimation} 3s cubic-bezier(0.4, 0, 0.2, 1) forwards 2500ms;
+    }
 `
 
 export const LeftPartCard = styled.div`
@@ -111,7 +119,7 @@ export const LeftPartCard = styled.div`
 
     background-color: #9d9d9d;
 
-    ${Card}:hover &, ${Card}:focus & {
+    &.guessed {
         animation: ${leftPartAnimation} 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     };
 `
@@ -134,7 +142,7 @@ export const RightPartCard = styled.div`
 
     background-color: #9d9d9d; 
 
-    ${Card}:hover &, ${Card}:focus & {
+    &.guessed {
         animation: ${rightPartAnimation} 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     };
 `
@@ -145,7 +153,7 @@ export const RedLine = styled.div`
     width: 2px;
     height: 1px;
 
-    ${Card}:hover &, ${Card}:focus & {
-        animation: ${redLineAnimation} 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards 1000ms;
+    &.guessed {
+        animation: ${redLineAnimation} 2s cubic-bezier(0.4, 0, 0.2, 1) forwards 1000ms;
     };
 `
