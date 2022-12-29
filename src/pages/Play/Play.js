@@ -11,8 +11,37 @@ import { useState, useEffect } from "react";
 export const Play = () => {
     const [lettersCardArr, setLettersCardArr] = useState([]);
     const [batteryCharge, setBatteryCharge] = useState(5);
+    const [guessedWordObject, setGuessedWordObject] = useState({})
 
-    const arrOfWords = [
+    const handleLetterBtnClick = (e) => {
+        if (lettersCardArr.length !== 0) {
+            const arrOfCards = Array.from(lettersCardArr);
+            const guessedCardArr = arrOfCards.filter((card) => card.children[1].innerText === e.currentTarget.innerText);
+
+            if (guessedCardArr.length !== 0) {
+                for (let elem of guessedCardArr) {
+                    elem.children[0].classList.add('guessed');
+                    elem.children[1].classList.add('guessed');
+                    elem.children[2].classList.add('guessed');
+                    elem.children[0].firstElementChild.classList.add('guessed');
+                    elem.children[2].firstElementChild.classList.add('guessed');
+                }
+            } else {
+                setBatteryCharge(batteryCharge - 1)
+            }
+        }
+        e.currentTarget.disabled = true;
+    }
+
+    
+
+    function robotMessage() {
+        let message = 'Я вірю, що ви зможете це осилити))';
+        return message;
+    }
+
+    useEffect(() => {
+        const arrOfWords = [
         {
             word: 'кінь',
             description: 'Це їздова тварина, яку з давніх часів люди використовують у господарстві',
@@ -54,25 +83,18 @@ export const Play = () => {
             description: 'Це займає значну частину на суші. Знаходиться у південній Азії і є частиною декількох різних країн. Своїми краєвидами приваблює самих відважних туристів',
         },
     ];
-
-    const pickWiord = arrOfWords[Math.floor(Math.random() * arrOfWords.length)];
-
-    function robotMessage() {
-        let message = 'Я вірю, що ви зможете це осилити))';
-        return message;
-    }
-
-    useEffect(() => {
         const arr = document.querySelectorAll('#letterCard');
-        setLettersCardArr(arr);
-    }, [])
+        const pickWiord = arrOfWords[Math.floor(Math.random() * arrOfWords.length)];
+        if(lettersCardArr.length === 0) setLettersCardArr(arr);
+        setGuessedWordObject(pickWiord);
+    }, [lettersCardArr])
 
     return (
         <>
             <Background>
                 <InfoPlayBox>
                     <DataPlayBox>
-                        <DescriptionContainer>{pickWiord.description}</DescriptionContainer>
+                        {guessedWordObject.description && <DescriptionContainer>{guessedWordObject.description}</DescriptionContainer>}
                         <RobotMessageContainer message={robotMessage()} />
                     </DataPlayBox>
                     <BatteryBox>
@@ -80,8 +102,8 @@ export const Play = () => {
                         <Battery batteryCharge={batteryCharge} />
                     </BatteryBox>
                 </InfoPlayBox>
-                <GuessedWordContainer guessedWord={pickWiord.word} />
-                <ButtonGrid batteryCharge={batteryCharge} setBatteryCharge={setBatteryCharge} cardArr={lettersCardArr} />
+                { guessedWordObject.word && <GuessedWordContainer guessedWord={guessedWordObject.word} />}
+                <ButtonGrid handleBtnClick={handleLetterBtnClick} />
             </Background>
         </>
     )
