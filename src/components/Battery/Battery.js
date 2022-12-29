@@ -18,6 +18,10 @@ export const Battery = ({batteryCharge}) => {
             case 1:
                 arr[1].classList.add('scale');
                 break;
+            case 0:
+                alert('Ви використали всі заряди батареї і не змогли відгадати слово');
+                window.location.reload()
+                break;
             default:
                 // arr.forEach(item => { item.classList.toggle('scale') });
         }
