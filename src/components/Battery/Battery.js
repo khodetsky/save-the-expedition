@@ -19,7 +19,7 @@ export const Battery = ({batteryCharge}) => {
                 arr[1].classList.add('scale');
                 break;
             default:
-                arr.forEach(item => { item.classList.toggle('scale') });
+                // arr.forEach(item => { item.classList.toggle('scale') });
         }
     }, [batteryCharge]);
 
