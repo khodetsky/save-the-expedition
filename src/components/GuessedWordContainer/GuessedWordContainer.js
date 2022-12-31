@@ -1,7 +1,7 @@
 import { CardForLetter } from '../../components/CardForLetter/CardForLetter';
 import { LettersList } from './GuessedWordContainer.styled';
 
-export const GuessedWordContainer = ({ guessedWord }) => {
+export const GuessedWordContainer = ({ guessedWord, setLettersCardArr }) => {
     let lettersArr = guessedWord.split('');
 
     return (
@@ -9,7 +9,7 @@ export const GuessedWordContainer = ({ guessedWord }) => {
             {guessedWord && <LettersList>
                 { lettersArr.map((letter, index) => (
                     <li key={index}>
-                        <CardForLetter letter={letter} />
+                        <CardForLetter letter={letter} setLettersCardArr={setLettersCardArr} />
                     </li>
                 ))}
             </LettersList>}
