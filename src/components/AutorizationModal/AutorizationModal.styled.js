@@ -15,7 +15,8 @@ export const AutorBackdrop = styled.div`
 
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: scroll;`
+    overflow-y: scroll;
+`
 
 export const AutorModalStyled = styled.div`
     padding: 40px 20px 20px 20px;
