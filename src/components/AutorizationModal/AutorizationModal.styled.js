@@ -1,4 +1,14 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const openModalOpacity = keyframes`
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+`
 
 export const AutorBackdrop = styled.div`
     position: fixed;
@@ -13,8 +23,7 @@ export const AutorBackdrop = styled.div`
 
     background-color: rgba(0, 0, 0, 0.2);
 
-    opacity: 1;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
     overflow-y: scroll;
 `
 
@@ -34,6 +43,7 @@ export const AutorModalStyled = styled.div`
     top: 50vh;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px 0px, rgba(0, 0, 0, 0.22) 0px 15px 12px 0px;
 `
