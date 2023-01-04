@@ -24,7 +24,10 @@ export const AutorBackdrop = styled.div`
     background-color: rgba(0, 0, 0, 0.2);
 
     animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    overflow-y: scroll;
+
+    .body.& {
+        overflow: hidden;
+    }
 `
 
 export const AutorModalStyled = styled.div`

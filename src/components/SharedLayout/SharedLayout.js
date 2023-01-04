@@ -13,10 +13,12 @@ const SharedLayout = () => {
 
   function openAutorizationModal() {
     setAutorizationModalIsOpen(true);
+    document.body.style.overflow = "hidden";
   }
 
   function closeAutorizationModal() {
-    setAutorizationModalIsOpen(false)
+    setAutorizationModalIsOpen(false);
+    document.body.style.overflow = "";
   }
 
     return (

@@ -5,6 +5,7 @@ import { Main } from '../pages/Main/Main';
 import { Play } from '../pages/Play/Play';
 import { Help } from '../pages/Help/Help';
 import { Profile } from '../pages/Profile/Profile';
+import { Game } from '../components/Game/Game';
 // import { createBrowserRouter } from 'react-router-dom';
 
 export const App = () => {
@@ -14,9 +15,10 @@ export const App = () => {
        <Routes>
          <Route path="/" element={<SharedLayout />}>
            <Route index element={<Main />} />
-           <Route path="play" element={<Play/>} />
+           <Route path="play" element={<Play />} />
            <Route path="help" element={<Help />} />
            <Route path="profile" element={<Profile />} />
+           <Route path="/play/:category" element={<Game />} />
          </Route>
        </Routes>
      </>

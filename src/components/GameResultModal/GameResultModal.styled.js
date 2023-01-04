@@ -25,7 +25,7 @@ export const Backdrop = styled.div`
 
     background-color: rgba(0, 0, 0, 0.2);
 
-    animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards ${(props) => props.animationDelay};
+    animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards ${(props) => props.animationDelay}ms;
     overflow-y: scroll;
 `
 
@@ -46,7 +46,7 @@ export const ModalStyled = styled.div`
     top: 50vh;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards ${(props) => props.animationDelay};
+    animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards ${(props) => props.animationDelay}ms;
    
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px 0px, rgba(0, 0, 0, 0.22) 0px 15px 12px 0px;
 `
