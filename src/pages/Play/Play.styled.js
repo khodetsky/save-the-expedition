@@ -2,13 +2,19 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Background = styled.div`
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
     width: 1280px;
-    height: 100vh;
 
     background-color: #4c4f68;
+`
+
+export const Main = styled.main`
+    flex: 1 1 auto;
 `
 
 export const LinkList = styled.ul`

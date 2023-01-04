@@ -1,7 +1,7 @@
 import { Battery } from '../Battery/Battery';
 import {
     Background, BatteryBox, InfoGameBox, DataGameBox, GoBackBtn, ButtonLink,
-    TimerContainer, GoBackBtnArrow, GoBackBtnIcon
+    TimerContainer, GoBackBtnArrow, GoBackBtnIcon, Main
 } from './Game.styled';
 import { DescriptionContainer } from '../DescriptionContainer/DescriptionContainer';
 import { RobotMessageContainer } from '../RobotMessageContainer/RobotMessageContainer';
@@ -12,7 +12,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GameResultModal } from '../GameResultModal/GameResultModal';
 import * as wordsCategories from '../wordsArr';
-import svgSprite from '../../images/sprite.svg'
+import svgSprite from '../../images/sprite.svg';
+import { PageFooter } from '../../components/PageFooter/PageFooter';
 
 export const Game = () => {
     const [lettersCardArr, setLettersCardArr] = useState([]);
@@ -77,29 +78,32 @@ export const Game = () => {
                 {(guessedWordObject.description && guessedWordObject.word) &&
                     (
                     <>
-                        <TimerContainer>
-                            <GoBackBtn>
-                                <ButtonLink to='/play'>
-                                    <GoBackBtnArrow>
-                                        <GoBackBtnIcon href={svgSprite + '#arrow-left'}></GoBackBtnIcon>
-                                    </GoBackBtnArrow>
-                                    Назад
-                                </ButtonLink>
-                            </GoBackBtn>
-                        </TimerContainer>
-                        <InfoGameBox>
-                        <DataGameBox>
-                            <DescriptionContainer>{guessedWordObject.description}</DescriptionContainer>
-                            <RobotMessageContainer message={robotMessage} />
-                        </DataGameBox>
-                        <BatteryBox>
-                            <img src={robotImage} alt="Робот" width={240} height={240} />
-                            <Battery batteryCharge={batteryCharge} />
-                        </BatteryBox>
-                        </InfoGameBox>
-                        <GuessedWordContainer setLettersCardArr={setLettersCardArr} guessedWord={guessedWordObject.word} />
-                        <ButtonGrid handleBtnClick={handleLetterBtnClick} />
-                    </> 
+                        <Main>
+                            <TimerContainer>
+                                <GoBackBtn>
+                                    <ButtonLink to='/play'>
+                                        <GoBackBtnArrow>
+                                            <GoBackBtnIcon href={svgSprite + '#arrow-left'}></GoBackBtnIcon>
+                                        </GoBackBtnArrow>
+                                        Назад
+                                    </ButtonLink>
+                                </GoBackBtn>
+                            </TimerContainer>
+                            <InfoGameBox>
+                            <DataGameBox>
+                                <DescriptionContainer>{guessedWordObject.description}</DescriptionContainer>
+                                <RobotMessageContainer message={robotMessage} />
+                            </DataGameBox>
+                            <BatteryBox>
+                                <img src={robotImage} alt="Робот" width={240} height={240} />
+                                <Battery batteryCharge={batteryCharge} />
+                            </BatteryBox>
+                            </InfoGameBox>
+                            <GuessedWordContainer setLettersCardArr={setLettersCardArr} guessedWord={guessedWordObject.word} />
+                            <ButtonGrid handleBtnClick={handleLetterBtnClick} />
+                        </Main> 
+                        <PageFooter/>
+                    </>
                     )
                 }
                 {guessLetters === 0 && <GameResultModal animationDelay='5000'>Гарна робота! Ви відгадали слово '{guessedWordObject.word}'</GameResultModal>}

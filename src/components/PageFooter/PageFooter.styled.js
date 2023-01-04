@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const Footer = styled.footer`
 margin-left: auto;
 margin-right: auto;
-margin-top: 210px;
+padding-bottom: 20px;
+padding-top: 50px;
 
 font-family: 'Raleway', sans-serif;
 font-weight: 500;
