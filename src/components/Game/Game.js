@@ -25,9 +25,7 @@ export const Game = () => {
     const { category } = useParams();
     const [timeLeft, setTimeLeft] = useState(120);
     const [timerIsActive, setTimerIsActive] = useState(true);
-
-    const minutes = pad(Math.floor(timeLeft / 60));
-    const seconds = pad(timeLeft - minutes * 60);
+    const [gamePoints, setGamePoints] = useState(0);
 
     useEffect(() => {
         const pickWiord = wordsCategories[category][Math.floor(Math.random() * wordsCategories[category].length)];
@@ -39,6 +37,11 @@ export const Game = () => {
         if (guessLetters === 0 || batteryCharge === 0) {
             setTimerIsActive(false);
         }
+        if (guessLetters === 0) {
+            const letters = guessedWordObject.word.length;
+            const points = calculateGamePoints(letters, batteryCharge, timeLeft);
+            setGamePoints(points);
+        }
         const interval = setInterval(() => {
             if (timerIsActive) {
                 setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
@@ -48,11 +51,7 @@ export const Game = () => {
         return () => {
             clearInterval(interval);
         };
-    }, [timeLeft, guessLetters, batteryCharge, timerIsActive]);
-
-    function pad(value) {
-        return String(value).padStart(2, '0');
-    };
+    }, [timeLeft, guessLetters, batteryCharge, timerIsActive, guessedWordObject]);
 
     const handleLetterBtnClick = (e) => {
         if (lettersCardArr.length !== 0) {
@@ -74,6 +73,48 @@ export const Game = () => {
             }
         }
         e.currentTarget.disabled = true;
+    }
+
+    function calculateGamePoints(letters, charge, time) {
+        // Math.ceil(5 * 5 * (56 / 10))
+        return Math.ceil(letters * charge * (time / 10))
+    }
+
+    function takePointsWord(points) {
+        const pointsToString = `${points}`;
+        const pointsArr = pointsToString.split('');
+        let pointsWord;
+        switch (pointsArr.length) {
+            case 3:
+                if ((pointsArr[2] === '2' || pointsArr[2] === '3' || pointsArr[2] === '4' ) && pointsArr[1] !== '1') {
+                    pointsWord = 'очка';
+                } else if (pointsArr[2] === '1' && pointsArr[1] !== '1') {
+                    pointsWord = 'очко';
+                } else {
+                    pointsWord = 'очків';
+                }
+                break;
+            case 2:
+                if ((pointsArr[1] === '2' || pointsArr[1] === '3' || pointsArr[1] === '4') && pointsArr[0] !== '1') {
+                    pointsWord = 'очка';
+                } else if (pointsArr[1] === '1' && pointsArr[0] !== '1') {
+                    pointsWord = 'очко';
+                } else {
+                    pointsWord = 'очків';
+                }
+                break;
+            case 1:
+                if (pointsArr[0] === '2' || pointsArr[0] === '3' || pointsArr[0] === '4') {
+                    pointsWord = 'очка';
+                } else if (pointsArr[0] === '1' ) {
+                    pointsWord = 'очко';
+                } else {
+                    pointsWord = 'очків';
+                }
+                break;
+            default:
+        }
+        return pointsWord;
     }
 
     function changeRobotMessage(arrOfLetters, letter) {
@@ -113,7 +154,7 @@ export const Game = () => {
                                         Назад
                                     </ButtonLink>
                                 </GoBackBtn>
-                                <Timer minutes={minutes} seconds={seconds} />
+                                <Timer timeLeftSec={timeLeft}/>
                             </TimerContainer>
                             <InfoGameBox>
                             <DataGameBox>
@@ -132,7 +173,7 @@ export const Game = () => {
                     </>
                     )
                 }
-                {guessLetters === 0 && <GameResultModal animationDelay='5000'>Гарна робота! Ви відгадали слово '{guessedWordObject.word}'</GameResultModal>}
+                {guessLetters === 0 && <GameResultModal animationDelay='5000'>Гарна робота! Ви відгадали слово '{guessedWordObject.word}' і отримуєте за це {gamePoints} {takePointsWord(gamePoints)}!</GameResultModal>}
                 {batteryCharge === 0 && <GameResultModal animationDelay='0'>У робота закінчився заряд батареї. Спробуйте відгадати інше слово!</GameResultModal>}
                 {timeLeft === 0 && <GameResultModal animationDelay='0'>Ви не відгадали слово за відведений час. Спробуйте відгадати інше слово!</GameResultModal>}
             </Background>
