@@ -84,6 +84,9 @@ export const TimerContainer = styled.div`
     padding-bottom: 10px;
     padding-left: 215px;
     padding-right: 215px;
+
+    display: flex;
+    align-items: center;
 `
 
 export const GoBackBtnArrow = styled.svg`

@@ -14,6 +14,7 @@ import { GameResultModal } from '../GameResultModal/GameResultModal';
 import * as wordsCategories from '../wordsArr';
 import svgSprite from '../../images/sprite.svg';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
+import { Timer } from '../../components/Timer/Timer';
 
 export const Game = () => {
     const [lettersCardArr, setLettersCardArr] = useState([]);
@@ -22,12 +23,36 @@ export const Game = () => {
     const [robotMessage, setRobotMessage] = useState('Цікаво, що ж це може бути');
     const [guessLetters, setGuessLetters] = useState();
     const { category } = useParams();
+    const [timeLeft, setTimeLeft] = useState(120);
+    const [timerIsActive, setTimerIsActive] = useState(true);
+
+    const minutes = pad(Math.floor(timeLeft / 60));
+    const seconds = pad(timeLeft - minutes * 60);
 
     useEffect(() => {
         const pickWiord = wordsCategories[category][Math.floor(Math.random() * wordsCategories[category].length)];
         setGuessedWordObject(pickWiord);
         setGuessLetters(pickWiord.word.length);
     }, [category]);
+
+    useEffect(() => {
+        if (guessLetters === 0 || batteryCharge === 0) {
+            setTimerIsActive(false);
+        }
+        const interval = setInterval(() => {
+            if (timerIsActive) {
+                setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
+            }
+        }, 1000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [timeLeft, guessLetters, batteryCharge, timerIsActive]);
+
+    function pad(value) {
+        return String(value).padStart(2, '0');
+    };
 
     const handleLetterBtnClick = (e) => {
         if (lettersCardArr.length !== 0) {
@@ -88,6 +113,7 @@ export const Game = () => {
                                         Назад
                                     </ButtonLink>
                                 </GoBackBtn>
+                                <Timer minutes={minutes} seconds={seconds} />
                             </TimerContainer>
                             <InfoGameBox>
                             <DataGameBox>
@@ -108,6 +134,7 @@ export const Game = () => {
                 }
                 {guessLetters === 0 && <GameResultModal animationDelay='5000'>Гарна робота! Ви відгадали слово '{guessedWordObject.word}'</GameResultModal>}
                 {batteryCharge === 0 && <GameResultModal animationDelay='0'>У робота закінчився заряд батареї. Спробуйте відгадати інше слово!</GameResultModal>}
+                {timeLeft === 0 && <GameResultModal animationDelay='0'>Ви не відгадали слово за відведений час. Спробуйте відгадати інше слово!</GameResultModal>}
             </Background>
         </>
     )

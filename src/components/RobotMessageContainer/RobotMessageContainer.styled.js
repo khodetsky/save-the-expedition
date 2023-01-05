@@ -9,9 +9,9 @@ export const MessageBox = styled.div`
 
     position: relative;
 
-    font-family: 'Press Start 2P', cursive;
-    font-weight: 400;
-    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 22px;
     text-align: center;
 
