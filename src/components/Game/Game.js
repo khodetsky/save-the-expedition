@@ -32,7 +32,13 @@ export const Game = () => {
     const [timeLeft, setTimeLeft] = useState(120);
     const [timerIsActive, setTimerIsActive] = useState(true);
     const [gamePoints, setGamePoints] = useState(0);
-    const [oldPoints, setOldPoints] = useState(userPoints);
+    const [oldPoints, setOldPoints] = useState(null);
+
+    useEffect(() => {
+        if (userPoints) {
+            setOldPoints(userPoints);
+        }
+    }, [userPoints])
 
     useEffect(() => {
         const pickWiord = wordsCategories[category][Math.floor(Math.random() * wordsCategories[category].length)];
@@ -63,7 +69,6 @@ export const Game = () => {
 
     useEffect(() => {
         if (guessLetters === 0) {
-            console.log(oldPoints, 'if in game2');
             addUserPoints(userId, oldPoints, gamePoints);
         }
     }, [userId, oldPoints, gamePoints, guessLetters])
