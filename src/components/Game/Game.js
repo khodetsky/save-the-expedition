@@ -15,8 +15,14 @@ import * as wordsCategories from '../wordsArr';
 import svgSprite from '../../images/sprite.svg';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 import { Timer } from '../../components/Timer/Timer';
+import { addUserPoints } from '../../firebase';
+import { useSelector } from "react-redux";
+import { getUserPoints, getUserId } from '../../redux/selectors';
 
 export const Game = () => {
+    const userPoints = useSelector(getUserPoints);
+    const userId = useSelector(getUserId);
+
     const [lettersCardArr, setLettersCardArr] = useState([]);
     const [batteryCharge, setBatteryCharge] = useState(5);
     const [guessedWordObject, setGuessedWordObject] = useState({});
@@ -26,6 +32,7 @@ export const Game = () => {
     const [timeLeft, setTimeLeft] = useState(120);
     const [timerIsActive, setTimerIsActive] = useState(true);
     const [gamePoints, setGamePoints] = useState(0);
+    const [oldPoints, setOldPoints] = useState(userPoints);
 
     useEffect(() => {
         const pickWiord = wordsCategories[category][Math.floor(Math.random() * wordsCategories[category].length)];
@@ -52,6 +59,14 @@ export const Game = () => {
             clearInterval(interval);
         };
     }, [timeLeft, guessLetters, batteryCharge, timerIsActive, guessedWordObject]);
+
+
+    useEffect(() => {
+        if (guessLetters === 0) {
+            console.log(oldPoints, 'if in game2');
+            addUserPoints(userId, oldPoints, gamePoints);
+        }
+    }, [userId, oldPoints, gamePoints, guessLetters])
 
     const handleLetterBtnClick = (e) => {
         if (lettersCardArr.length !== 0) {

@@ -3,8 +3,11 @@ import {
     SignInFormStyled, InputContainer, InputStyled, LabelStyled,
     ErrorMessage, FormHeader,  SignUpBtn, SignInContainer, EnterBtn
 } from './SignUpForm.styled';
+import { auth, writeUserDataInDB } from '../../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-export const SignUpForm = ({ toggleTypeOfForm }) => {
+
+export const SignUpForm = ({ toggleTypeOfForm, closeModal }) => {
 
     const initialValues = {
         name: '',
@@ -12,9 +15,15 @@ export const SignUpForm = ({ toggleTypeOfForm }) => {
         password: '',
     };
 
-    const registrationUser = (values, { resetForm }) => {
-        console.log(values)
-      resetForm();
+    const registrationUser = ({name, email, password}, { resetForm }) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(credentials => {
+                writeUserDataInDB(credentials.user.uid, name, email);
+                closeModal();
+                resetForm();
+            })
+            .catch(e => console.error(e));
+      
     };
 
     function validateName(value) {

@@ -7,8 +7,37 @@ import { Help } from '../pages/Help/Help';
 import { Profile } from '../pages/Profile/Profile';
 import { Game } from '../components/Game/Game';
 // import { createBrowserRouter } from 'react-router-dom';
+import { useEffect } from "react";
+import { auth, writeUserGuessedWordsInState, writeUserPointsInState, writeUserNameInState } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useSelector, useDispatch } from "react-redux";
+import { getUserId } from '../redux/selectors';
+import { setUserId, setUserName, setUserPoints, setUserGuessedWord } from '../redux/userSlice';
+
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const userId = useSelector(getUserId);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(setUserId(user.uid))
+    } else {
+      console.log('user not found')
+    }
+  });
+
+  useEffect(() => {
+    if (userId) {
+      writeUserNameInState(userId, dispatch, setUserName);
+      writeUserPointsInState(userId, dispatch, setUserPoints);
+      writeUserGuessedWordsInState(userId, dispatch, setUserGuessedWord);
+    } else {
+      dispatch(setUserName(null));
+    }
+
+    }, [userId, dispatch]);
+
    return (
      <>
        <GlobalStyle />

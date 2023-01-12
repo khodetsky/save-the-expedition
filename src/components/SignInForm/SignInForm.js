@@ -3,16 +3,23 @@ import {
     SignInFormStyled, InputContainer, InputStyled, LabelStyled,
     ErrorMessage, SignInBtn, FormHeader, FormText, RegistrationBtn, RegistrationContainer
 } from './SignInForm.styled';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 
-export const SignInForm = ({toggleTypeOfForm}) => {
+export const SignInForm = ({ toggleTypeOfForm, closeModal }) => {
+
     const initialValues = {
         email: '',
         password: '',
-    };
+  };
 
-    const enterUser = (values, { resetForm }) => {
-        console.log(values)
-      resetForm();
+  const enterUser = ({ email, password }, { resetForm }) => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then(credentials => {
+        closeModal();
+        resetForm();
+      })
+      .catch(e => console.error(e));
     };
 
     function validateEmail(value) {

@@ -20,8 +20,8 @@ export const AutorizationModal = ({ closeModal }) => {
             <AutorBackdrop onClick={closeModal}>
             </AutorBackdrop>
             <AutorModalStyled>
-                {typeOfForm === 'signIn' && <SignInForm toggleTypeOfForm={toggleTypeOfForm}/>}
-                {typeOfForm === 'signUp' && <SignUpForm toggleTypeOfForm={toggleTypeOfForm}/>}
+                {typeOfForm === 'signIn' && <SignInForm toggleTypeOfForm={toggleTypeOfForm} closeModal={closeModal} />}
+                {typeOfForm === 'signUp' && <SignUpForm toggleTypeOfForm={toggleTypeOfForm} closeModal={closeModal} />}
                 <AutorModalCloseBtn type="button" onClick={closeModal}>
                   <AutorModalCloseBtnIcon>
                     <AutorModalCloseBtnSymbol href={exitIcon + '#cross'}></AutorModalCloseBtnSymbol>

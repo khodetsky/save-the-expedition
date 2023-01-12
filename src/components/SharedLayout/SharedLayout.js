@@ -7,10 +7,16 @@ import {
   HeaderContainer, HeaderLeft, Header, NavLinkStyled,
   NavLinkRight, SignUpButton, HeaderRightBox
 } from './SharedLayout.styled';
+import { useSelector } from "react-redux";
+import { getUserName } from '../../redux/selectors';
+
+
 
 const SharedLayout = () => {
   const [autorizationModalIsOpen, setAutorizationModalIsOpen] = useState(false);
+  const userName = useSelector(getUserName);
 
+ 
   function openAutorizationModal() {
     setAutorizationModalIsOpen(true);
     document.body.style.overflow = "hidden";
@@ -34,8 +40,7 @@ const SharedLayout = () => {
             </HeaderLeft>
             <HeaderRightBox>
               <NavLinkRight to="/help">Як грати</NavLinkRight>
-              <SignUpButton type="button" onClick={openAutorizationModal}>Увійти</SignUpButton>
-              <UserInfo/>
+              {userName ? <UserInfo name={userName}/> : <SignUpButton type="button" onClick={openAutorizationModal}>Увійти</SignUpButton>}
             </HeaderRightBox>  
           </HeaderContainer>
           {autorizationModalIsOpen && (<AutorizationModal closeModal={closeAutorizationModal} />)}
