@@ -9,6 +9,7 @@ import svgSprite from '../../images/sprite.svg';
 import { useSelector } from "react-redux";
 import { getUserPoints, getUserName, getUserCountGuessedWords } from '../../redux/selectors';
 import { useState, useEffect } from "react";
+import { UserPointsProgress } from '../../components/UserPointsProgress/UserPointsProgress';
 
 
 
@@ -51,55 +52,57 @@ export const Profile = () => {
                             <LeftSideContainer>
                                 <ImageContainer>
                                     <UserLevelBox>{userLevel}</UserLevelBox>
-                                    <img src={robotImage} alt="Робот" width={240} height={240} />
-                            </ImageContainer>
-                            {/* progress */}
+                                <img src={robotImage} alt="Робот" width={240} height={240} />
+                                </ImageContainer>
+                                <UserPointsProgress points={userPoints} level={userLevel} />
                             </LeftSideContainer>
                             <RightSideContainer>
-                                <ProfileName>{userName}</ProfileName>
-                                <DataPointsContainer>
-                                    <DataText>Очки: {userPoints} /5000</DataText>
-                                {userPoints >= 5000 && 
-                                    <Icon>
-                                        <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
-                                    </Icon>
-                                }
-                                </DataPointsContainer>
                                 <div>
-                                    <DataText>Відгадано слів у категоріях:</DataText>
-                                    <DataCategoryList>
-                                        <li>
-                                            Тварини: {userGuessedWords.animals} /10
-                                            {userGuessedWords.animals >= 10 && 
-                                                <Icon>
-                                                    <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
-                                                </Icon>
-                                            }
-                                        </li>
-                                        <li>
-                                            Географія: {userGuessedWords.geography} /10
-                                            {userGuessedWords.geography >= 10 && 
-                                                <Icon>
-                                                    <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
-                                                </Icon>
-                                            }
-                                        </li>
-                                        <li>
-                                            Інструменти та пристрої: {userGuessedWords.tools} /10
-                                            {userGuessedWords.tools >= 10 && 
-                                                <Icon>
-                                                    <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
-                                                </Icon>
-                                            }
-                                        </li>
-                                    </DataCategoryList>
+                                    <ProfileName>{userName}</ProfileName>
+                                    <DataPointsContainer>
+                                        <DataText>Очки: {userPoints} /5000</DataText>
+                                    {userPoints >= 5000 && 
+                                        <Icon>
+                                            <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
+                                        </Icon>
+                                    }
+                                    </DataPointsContainer>
+                                    <div>
+                                        <DataText>Відгадано слів у категоріях:</DataText>
+                                        <DataCategoryList>
+                                            <li>
+                                                Тварини: {userGuessedWords.animals} /10
+                                                {userGuessedWords.animals >= 10 && 
+                                                    <Icon>
+                                                        <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
+                                                    </Icon>
+                                                }
+                                            </li>
+                                            <li>
+                                                Географія: {userGuessedWords.geography} /10
+                                                {userGuessedWords.geography >= 10 && 
+                                                    <Icon>
+                                                        <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
+                                                    </Icon>
+                                                }
+                                            </li>
+                                            <li>
+                                                Інструменти та пристрої: {userGuessedWords.tools} /10
+                                                {userGuessedWords.tools >= 10 && 
+                                                    <Icon>
+                                                        <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
+                                                    </Icon>
+                                                }
+                                            </li>
+                                        </DataCategoryList>
+                                    </div>
                                 </div>
-                            <ButtonContainer>
-                                {(userPoints >= 5000 && userGuessedWords.tools >= 10 && userGuessedWords.geography >= 10 && userGuessedWords.animals >= 10)
-                                    ? <ComixButton type='button'>Переглянути комікс</ComixButton>
-                                    : <ButtonContainerText>Виконайте всі умови, щоб розблокувати фінал історії</ButtonContainerText>
-                                }
-                            </ButtonContainer>
+                                <ButtonContainer>
+                                    {(userPoints >= 5000 && userGuessedWords.tools >= 10 && userGuessedWords.geography >= 10 && userGuessedWords.animals >= 10)
+                                        ? <ComixButton type='button'>Переглянути комікс</ComixButton>
+                                        : <ButtonContainerText>Виконайте всі умови, щоб розблокувати фінал історії</ButtonContainerText>
+                                    }
+                                </ButtonContainer>
                             </RightSideContainer>
                         </>}
                 </ProfileContainer>

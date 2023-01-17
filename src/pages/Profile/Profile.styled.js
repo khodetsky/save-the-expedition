@@ -20,7 +20,7 @@ export const ProfileContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
     margin-top: 140px;
-    padding-top: 100px;
+    padding: 60px 0;
     width: 750px;
     height: 500px;
     background-color: #47484e;
@@ -37,6 +37,7 @@ export const LeftSideContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 
     width: 300px;
 `
@@ -44,6 +45,8 @@ export const LeftSideContainer = styled.div`
 export const RightSideContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+
     // align-items: center;
 
     width: 320px;
