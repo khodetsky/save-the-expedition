@@ -32,13 +32,15 @@ export const Game = () => {
     const [timeLeft, setTimeLeft] = useState(120);
     const [timerIsActive, setTimerIsActive] = useState(true);
     const [gamePoints, setGamePoints] = useState(0);
-    const [oldPoints, setOldPoints] = useState(null);
+    const [oldPoints, setOldPoints] = useState(userPoints);
+    const [pointsAreThere, setPointsAreThere] = useState(false);
 
     useEffect(() => {
-        if (userPoints) {
+        if (userPoints !== null && !pointsAreThere) {
             setOldPoints(userPoints);
+            setPointsAreThere(true);
         }
-    }, [userPoints])
+    }, [userPoints, pointsAreThere])
 
     useEffect(() => {
         const pickWiord = wordsCategories[category][Math.floor(Math.random() * wordsCategories[category].length)];
@@ -68,10 +70,27 @@ export const Game = () => {
 
 
     useEffect(() => {
-        if (guessLetters === 0) {
+        let i = 0;
+        // console.log(oldPoints, 'oldPoints' ,i);
+        // console.log(gamePoints, 'gamePoints', i);
+        
+        if (guessLetters === 0 && gamePoints !== 0) {
+            i = 1;
+            console.log(oldPoints, 'oldPoints' ,i);
+            console.log(gamePoints, 'gamePoints' ,i);
+
+            // dispatch(addGamePoints(gamePoints));
             addUserPoints(userId, oldPoints, gamePoints);
+        } else if (oldPoints === 0 && gamePoints === 0) {
+            i = 2;
+            console.log(oldPoints, 'oldPoints' ,i);
+            console.log(gamePoints, 'gamePoints' ,i);
+            return;
         }
-    }, [userId, oldPoints, gamePoints, guessLetters])
+    },
+        [userId, oldPoints, gamePoints, guessLetters])
+        // [gamePoints, dispatch, guessLetters])
+
 
     const handleLetterBtnClick = (e) => {
         if (lettersCardArr.length !== 0) {

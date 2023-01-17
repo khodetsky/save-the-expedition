@@ -21,10 +21,7 @@ cursor: pointer;
 transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
 color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-    :hover, :focus {
-        color: #000000;
-        border-color: #000000;
-    };
+s
 `
 
 export const UserButtonArrow = styled.svg`

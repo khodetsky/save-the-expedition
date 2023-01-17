@@ -41,6 +41,7 @@ const SharedLayout = () => {
             <HeaderRightBox>
               <NavLinkRight to="/help">Як грати</NavLinkRight>
               {userName ? <UserInfo name={userName}/> : <SignUpButton type="button" onClick={openAutorizationModal}>Увійти</SignUpButton>}
+              {/* <UserInfo name={userName}/> */}
             </HeaderRightBox>  
           </HeaderContainer>
           {autorizationModalIsOpen && (<AutorizationModal closeModal={closeAutorizationModal} />)}

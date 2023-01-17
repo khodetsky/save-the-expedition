@@ -46,7 +46,7 @@ export function writeUserDataInDB(userId, name) {
     username: name,
     countGuessedWords: {
         animals: 0,
-        geograpgy: 0,
+        geography: 0,
         tools: 0,
     },
     points : 0,

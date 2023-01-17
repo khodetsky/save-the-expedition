@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     id: null,
     username: null,
-    points : 0,
+    points : null,
     countGuessedWords: {
-        animals: 0,
-        geograpgy: 0,
-        tools: 0,
+        animals: null,
+        geograpgy: null,
+        tools: null,
     },
 }
 
@@ -25,9 +25,9 @@ export const userSlice = createSlice({
             state.points = action.payload;
         },
         setUserGuessedWord(state, action) {
-            state.countGuessedWords[action.payload] += 1;
+            state.countGuessedWords = action.payload;
         },
     }
 });
 
-export const { setUserId, setUserName, setUserPoints, setUserGuessedWord } = userSlice.actions;
+export const { setUserId, setUserName, setUserPoints, setUserGuessedWord, addGamePoints } = userSlice.actions;
