@@ -15,32 +15,35 @@ import * as wordsCategories from '../wordsArr';
 import svgSprite from '../../images/sprite.svg';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 import { Timer } from '../../components/Timer/Timer';
-import { addUserPoints } from '../../firebase';
+import { addUserPoints, incrementUserGuessedWord } from '../../firebase';
 import { useSelector } from "react-redux";
-import { getUserPoints, getUserId } from '../../redux/selectors';
+import { getUserPoints, getUserId, getUserCountGuessedWords } from '../../redux/selectors';
 
 export const Game = () => {
     const userPoints = useSelector(getUserPoints);
     const userId = useSelector(getUserId);
+    const guessedWords = useSelector(getUserCountGuessedWords);
+    const { category } = useParams();
 
     const [lettersCardArr, setLettersCardArr] = useState([]);
     const [batteryCharge, setBatteryCharge] = useState(5);
     const [guessedWordObject, setGuessedWordObject] = useState({});
     const [robotMessage, setRobotMessage] = useState('Цікаво, що ж це може бути');
     const [guessLetters, setGuessLetters] = useState();
-    const { category } = useParams();
     const [timeLeft, setTimeLeft] = useState(120);
     const [timerIsActive, setTimerIsActive] = useState(true);
     const [gamePoints, setGamePoints] = useState(0);
     const [oldPoints, setOldPoints] = useState(userPoints);
     const [pointsAreThere, setPointsAreThere] = useState(false);
+    const [userGuessedWords, setUserGuessedWords] = useState(null);
 
     useEffect(() => {
-        if (userPoints !== null && !pointsAreThere) {
+        if (userPoints !== null && guessedWords !== null && !pointsAreThere) {
             setOldPoints(userPoints);
+            setUserGuessedWords(guessedWords);
             setPointsAreThere(true);
         }
-    }, [userPoints, pointsAreThere])
+    }, [userPoints, guessedWords, pointsAreThere])
 
     useEffect(() => {
         const pickWiord = wordsCategories[category][Math.floor(Math.random() * wordsCategories[category].length)];
@@ -71,8 +74,6 @@ export const Game = () => {
 
     useEffect(() => {
         let i = 0;
-        // console.log(oldPoints, 'oldPoints' ,i);
-        // console.log(gamePoints, 'gamePoints', i);
         
         if (guessLetters === 0 && gamePoints !== 0) {
             i = 1;
@@ -81,6 +82,7 @@ export const Game = () => {
 
             // dispatch(addGamePoints(gamePoints));
             addUserPoints(userId, oldPoints, gamePoints);
+            incrementUserGuessedWord(userId, category, userGuessedWords);
         } else if (oldPoints === 0 && gamePoints === 0) {
             i = 2;
             console.log(oldPoints, 'oldPoints' ,i);
@@ -88,7 +90,7 @@ export const Game = () => {
             return;
         }
     },
-        [userId, oldPoints, gamePoints, guessLetters])
+        [userId, oldPoints, gamePoints, guessLetters, category, userGuessedWords])
         // [gamePoints, dispatch, guessLetters])
 
 

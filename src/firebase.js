@@ -1,13 +1,5 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, setPersistence, browserSessionPersistence } from 'firebase/auth';
-
-// const API_KEY = import.meta.env.VITE_API_KEY;
-// const AUTH_DOMAIN = import.meta.env.VITE_AUTH_DOMAIN;
-// const DATABASE_URL = import.meta.env.VITE_DATABASE_URL;
-// const PROJECT_ID = import.meta.env.VITE_PROJECT_ID;
-// const STORAGE_BUCKET = import.meta.env.VITE_STORAGE_BUCKET;
-// const MESSAGING_SENDER_ID = import.meta.env.VITE_MESSAGING_SENDER_ID;
-// const APP_ID = import.meta.env.VITE_APP_ID;
 import { getDatabase, ref, set, onValue, update} from "firebase/database";
 
 const firebaseConfig = {
@@ -26,21 +18,6 @@ const db = getDatabase();
 
 setPersistence(auth, browserSessionPersistence);
 
-// const app = initializeApp(firebaseConfig);
-// const auth = getAuth(app);
-// const user = auth.currentUser;
-
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     console.log(user);
-//     // ...
-//   } else {
-//     console.log('user not found')
-//   }
-// });
-
-// export const nameRef = ref(db, 'posts/' + postId + '/username');
-
 export function writeUserDataInDB(userId, name) {
   set(ref(db, 'users/' + userId), {
     username: name,
@@ -57,7 +34,8 @@ export function addUserPoints(userId, oldPoints,  newPoints) {
     update(ref(db), { ['users/' + userId + '/points']: oldPoints + newPoints });
 }
 
-export function incrementUserGuessedWord(userId, category, oldPoints) {
+export function incrementUserGuessedWord(userId, category, categoriesArr) {
+  const oldPoints = categoriesArr[category];
     update(ref(db), { ['users/' + userId + '/countGuessedWords/' + category]: oldPoints + 1 });
 }
 
