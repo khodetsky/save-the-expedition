@@ -18,7 +18,7 @@ export const Main = styled.main`
 `
 
 export const LinkList = styled.ul`
-    padding-top: 150px;
+    padding-top: 170px;
     padding-left: 215px;
     padding-right: 215px;
     display: flex;
@@ -30,7 +30,7 @@ export const LinkStyled = styled(Link)`
     text-decoration: none;
 `
 
-export const ListLinkItem = styled.li`
+export const LinkListItem = styled.li`
     position: relative;
 `
 

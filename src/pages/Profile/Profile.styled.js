@@ -19,7 +19,7 @@ export const Main = styled.main`
 export const ProfileContainer = styled.div`
     margin-left: auto;
     margin-right: auto;
-    margin-top: 140px;
+    margin-top: 170px;
     padding: 60px 0;
     width: 750px;
     height: 500px;
@@ -49,7 +49,7 @@ export const RightSideContainer = styled.div`
 
     // align-items: center;
 
-    width: 320px;
+    width: 340px;
     color: #7a7a87;
 `
 
@@ -126,6 +126,10 @@ export const DataCategoryList = styled.ul`
     line-height: 22px;
 
     margin-left: 10px;
+`
+
+export const DataCategoryListItem = styled.li`
+    margin-top: 10px;
 `
 
 export const ButtonContainer = styled.div`

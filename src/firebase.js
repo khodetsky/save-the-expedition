@@ -25,6 +25,7 @@ export function writeUserDataInDB(userId, name) {
         animals: 0,
         geography: 0,
         tools: 0,
+        history: 0,
     },
     points : 0,
   });

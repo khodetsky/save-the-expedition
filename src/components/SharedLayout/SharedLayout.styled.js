@@ -30,24 +30,32 @@ position: relative;
 `
 
 export const NavLinkStyled = styled(NavLink)`
-text-decoration: none;
-margin-left: 30px;
-color: #FFFFFF;
-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    margin-left: 30px;
+    color: #FFFFFF;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-:hover, :focus {
-    color: #000000;
-};`
+    :hover, :focus {
+        color: #000000;
+    };
+
+    &.active {
+        color: #000000;
+    };
+`
 
 export const NavLinkRight = styled(NavLink)`
-text-decoration: none;
-margin-right: 30px;
-color: #FFFFFF;
-transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    margin-right: 30px;
+    color: #FFFFFF;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-:hover, :focus {
-    color: #000000;
-};`
+    :hover, :focus {
+        color: #000000;
+    };
+    &.active {
+        color: #000000;
+    };`
 
 export const SignUpButton = styled.button`
 border: 1px solid #FFFFFF;

@@ -1,7 +1,7 @@
 import {
     Background, Main, ProfileContainer, LeftSideContainer, RightSideContainer, UserLevelBox,
     ImageContainer, Icon, Checkmark, DataPointsContainer, DataText, ProfileName, DataCategoryList,
-    ButtonContainer, ButtonContainerText, ComixButton
+    ButtonContainer, ButtonContainerText, ComixButton, DataCategoryListItem
 } from './Profile.styled';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 import robotImage from '../../images/robot.png';
@@ -70,30 +70,38 @@ export const Profile = () => {
                                     <div>
                                         <DataText>Відгадано слів у категоріях:</DataText>
                                         <DataCategoryList>
-                                            <li>
+                                            <DataCategoryListItem>
                                                 Тварини: {userGuessedWords.animals} /10
                                                 {userGuessedWords.animals >= 10 && 
                                                     <Icon>
                                                         <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
                                                     </Icon>
                                                 }
-                                            </li>
-                                            <li>
+                                            </DataCategoryListItem>
+                                            <DataCategoryListItem>
                                                 Географія: {userGuessedWords.geography} /10
                                                 {userGuessedWords.geography >= 10 && 
                                                     <Icon>
                                                         <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
                                                     </Icon>
                                                 }
-                                            </li>
-                                            <li>
+                                            </DataCategoryListItem>
+                                            <DataCategoryListItem>
                                                 Інструменти та пристрої: {userGuessedWords.tools} /10
                                                 {userGuessedWords.tools >= 10 && 
                                                     <Icon>
                                                         <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
                                                     </Icon>
                                                 }
-                                            </li>
+                                            </DataCategoryListItem>
+                                            <DataCategoryListItem>
+                                                Історія та давні цивілізації: {userGuessedWords.history} /10
+                                               {userGuessedWords.history >= 10 && 
+                                                    <Icon>
+                                                        <Checkmark href={svgSprite + '#checkmark'}></Checkmark>
+                                                    </Icon>
+                                                }
+                                            </DataCategoryListItem>
                                         </DataCategoryList>
                                     </div>
                                 </div>

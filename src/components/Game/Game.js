@@ -73,25 +73,12 @@ export const Game = () => {
 
 
     useEffect(() => {
-        let i = 0;
-        
-        if (guessLetters === 0 && gamePoints !== 0) {
-            i = 1;
-            console.log(oldPoints, 'oldPoints' ,i);
-            console.log(gamePoints, 'gamePoints' ,i);
-
-            // dispatch(addGamePoints(gamePoints));
+        if (guessLetters === 0 && gamePoints !== 0 && userId) {
             addUserPoints(userId, oldPoints, gamePoints);
             incrementUserGuessedWord(userId, category, userGuessedWords);
-        } else if (oldPoints === 0 && gamePoints === 0) {
-            i = 2;
-            console.log(oldPoints, 'oldPoints' ,i);
-            console.log(gamePoints, 'gamePoints' ,i);
-            return;
         }
     },
-        [userId, oldPoints, gamePoints, guessLetters, category, userGuessedWords])
-        // [gamePoints, dispatch, guessLetters])
+        [userId, oldPoints, gamePoints, guessLetters, category, userGuessedWords]);
 
 
     const handleLetterBtnClick = (e) => {

@@ -1,7 +1,8 @@
-import { Background, LinkList, CategoryImg, LinkStyled, CategoryText, ListLinkItem, Main } from './Play.styled';
+import { Background, LinkList, CategoryImg, LinkStyled, CategoryText, LinkListItem, Main } from './Play.styled';
 import natureImg from '../../images/nature.webp';
 import animalsImg from '../../images/animals.webp';
 import toolsImg from '../../images/tools.webp';
+import historyImg from '../../images/history.webp';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 
 export const Play = () => {
@@ -9,24 +10,30 @@ export const Play = () => {
         <Background>
             <Main>
                 <LinkList>
-                    <ListLinkItem>
+                    <LinkListItem>
                         <LinkStyled to='animals'>
                             <CategoryImg src={animalsImg} alt='animals' />
                             <CategoryText>Тварини</CategoryText>
                         </LinkStyled>
-                    </ListLinkItem>
-                    <ListLinkItem>
+                    </LinkListItem>
+                    <LinkListItem>
                         <LinkStyled to='geography'>
                             <CategoryImg src={natureImg} alt='geography' />
                             <CategoryText>Географія</CategoryText>
                         </LinkStyled>
-                    </ListLinkItem>
-                    <ListLinkItem>
+                    </LinkListItem>
+                    <LinkListItem>
                         <LinkStyled to='tools'>
                             <CategoryImg src={toolsImg} alt='tools' />
                             <CategoryText>Інструменти та пристрої</CategoryText>
                         </LinkStyled>
-                    </ListLinkItem>
+                    </LinkListItem>
+                    <LinkListItem>
+                        <LinkStyled to='history'>
+                            <CategoryImg src={historyImg} alt='history' />
+                            <CategoryText>Історія та давні цивілізації</CategoryText>
+                        </LinkStyled>
+                    </LinkListItem>
                 </LinkList>
             </Main>
             <PageFooter/>

@@ -9,16 +9,22 @@ import { auth } from '../../firebase';
 import { useSelector, useDispatch } from "react-redux";
 import { getUserName } from '../../redux/selectors';
 import { setUserId } from '../../redux/userSlice';
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const UserInfo = () => {
     const dispatch = useDispatch();
+    const location = useLocation();
+    const navigate = useNavigate();
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const userName = useSelector(getUserName);
 
 
     function onExitBtnClick() {
         signOut(auth).then(() => {
-            dispatch(setUserId(null))
+            dispatch(setUserId(null));
+            if (location.pathname === "/profile") {
+                navigate("/", { replace: true });
+            }
         }).catch((error) => {
           console.log(error)
         });

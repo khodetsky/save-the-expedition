@@ -6,11 +6,11 @@ const leftPartAnimation = keyframes`
     }
 
     50% {
-      transform: translate(0, 150px);
+      transform: translate(0, 149px);
     }
 
     100% {
-      transform: translate(40px, 150px);
+      transform: translate(39px, 149px);
     }
 `
 
@@ -20,24 +20,23 @@ const rightPartAnimation = keyframes`
     }
 
     50% {
-      transform: translate(0, -150px);
+      transform: translate(0, -151px);
     }
 
     100% {
-      transform: translate(-45px, -150px);
+      transform: translate(-46px, -151px);
     }
 `
 
 const redLineAnimation = keyframes`
     0% {
         opacity: 1;
-        transform: scaleY(0);
+        height: 1px;
         background-color: #fafd4a;
     }
 
     50% {
         opacity: 1;
-        transform: scaleY(84);
     }
 
     60% {
@@ -47,7 +46,7 @@ const redLineAnimation = keyframes`
     100% {
         opacity: 1;
         background-color: grey;
-        transform: scaleY(84);
+        height: 86px;
     }
 `
 
@@ -109,8 +108,8 @@ export const LeftPartCard = styled.div`
     display: flex;
     justify-content: flex-end;
 
-    width: 35px;
-    height: 90px;
+    width: 36px;
+    height: 92px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     border-top: 3px solid black;
@@ -132,8 +131,8 @@ export const RightPartCard = styled.div`
     display: flex;
     justify-content: flex-start;
 
-    width: 35px;
-    height: 90px;
+    width: 36px;
+    height: 92px;
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     border-top: 3px solid black;
@@ -149,9 +148,7 @@ export const RightPartCard = styled.div`
 
 export const RedLine = styled.div`
     transform-origin: top center;
-    background-color: red;
     width: 2px;
-    height: 1px;
 
     &.guessed {
         animation: ${redLineAnimation} 2s cubic-bezier(0.4, 0, 0.2, 1) forwards 1000ms;

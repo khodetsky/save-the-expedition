@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { Suspense } from "react";
 import { UserInfo } from '../UserInfo/UserInfo';
 import { useState } from 'react';
@@ -9,8 +9,7 @@ import {
 } from './SharedLayout.styled';
 import { useSelector } from "react-redux";
 import { getUserName } from '../../redux/selectors';
-
-
+import logoIcon from '../../images/logo4.svg';
 
 const SharedLayout = () => {
   const [autorizationModalIsOpen, setAutorizationModalIsOpen] = useState(false);
@@ -32,7 +31,7 @@ const SharedLayout = () => {
         <Header>
           <HeaderContainer>
             <HeaderLeft>
-              <h2>ToCreator</h2>
+              <Link to={"/"} style={{cursor: "pointer"}}><img src={logoIcon} alt='логотип' width={70} /></Link>
               <nav>
                 <NavLinkStyled to="/">Головна</NavLinkStyled>
                 <NavLinkStyled to="/play">Грати</NavLinkStyled>
@@ -41,7 +40,6 @@ const SharedLayout = () => {
             <HeaderRightBox>
               <NavLinkRight to="/help">Як грати</NavLinkRight>
               {userName ? <UserInfo name={userName}/> : <SignUpButton type="button" onClick={openAutorizationModal}>Увійти</SignUpButton>}
-              {/* <UserInfo name={userName}/> */}
             </HeaderRightBox>  
           </HeaderContainer>
           {autorizationModalIsOpen && (<AutorizationModal closeModal={closeAutorizationModal} />)}

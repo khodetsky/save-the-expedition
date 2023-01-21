@@ -80,7 +80,7 @@ export const ButtonLink = styled(Link)`
 `
 
 export const TimerContainer = styled.div`
-    padding-top: 100px;
+    padding-top: 170px;
     padding-bottom: 10px;
     padding-left: 215px;
     padding-right: 215px;
