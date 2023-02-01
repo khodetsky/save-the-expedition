@@ -1,21 +1,33 @@
 {
   "files": {
     "main.css": "/To-my-creator/static/css/main.c3d5249d.css",
-    "main.js": "/To-my-creator/static/js/main.34879af2.js",
-    "static/media/Background.png": "/To-my-creator/static/media/Background.a7a3eb794144354aa0e3.png",
-    "static/media/robot.png": "/To-my-creator/static/media/robot.a5455f5fe0bdbc75ae77.png",
+    "main.js": "/To-my-creator/static/js/main.c934178e.js",
+    "static/media/front-layer.png": "/To-my-creator/static/media/front-layer.e90b02e79c869ddcd64c.png",
+    "static/media/second-layer.webp": "/To-my-creator/static/media/second-layer.5ea198879f1c67146b8b.webp",
+    "static/media/front-layer.webp": "/To-my-creator/static/media/front-layer.1a7ee61a2ff7db199770.webp",
+    "static/media/base-image.webp": "/To-my-creator/static/media/base-image.19642f7ab6891ec95501.webp",
+    "static/media/midl-layer.webp": "/To-my-creator/static/media/midl-layer.5304cacf1e8adeb66e30.webp",
+    "static/media/third-layer.webp": "/To-my-creator/static/media/third-layer.daac233049b27882b68d.webp",
+    "static/media/robot.webp": "/To-my-creator/static/media/robot.757ef7b69f881303d409.webp",
     "static/media/history.webp": "/To-my-creator/static/media/history.39d208e3ddb4b724895a.webp",
     "static/media/animals.webp": "/To-my-creator/static/media/animals.66f2ad057b4d841e4574.webp",
     "static/media/tools.webp": "/To-my-creator/static/media/tools.7ac2cfe5d5188480693a.webp",
-    "static/media/logo4.svg": "/To-my-creator/static/media/logo4.7adfd3552c5580daa682a9de215490ce.svg",
+    "static/media/help4.webp": "/To-my-creator/static/media/help4.aa44d2804139ca7a42d5.webp",
+    "static/media/logo.svg": "/To-my-creator/static/media/logo.8d194559b59c6bc4b7c687841b893b30.svg",
+    "static/media/help5.webp": "/To-my-creator/static/media/help5.db5ae0524aa0fd994096.webp",
     "static/media/nature.webp": "/To-my-creator/static/media/nature.bf026964e7c392419e5b.webp",
+    "static/media/help7.webp": "/To-my-creator/static/media/help7.b3b33e99185ea68b95d7.webp",
+    "static/media/help6.webp": "/To-my-creator/static/media/help6.692aa0e8cbf997edf666.webp",
+    "static/media/help2.webp": "/To-my-creator/static/media/help2.dd7390eb9b05c85c11d3.webp",
+    "static/media/help3.webp": "/To-my-creator/static/media/help3.557b70d3d5000c76ecc4.webp",
     "static/media/sprite.svg": "/To-my-creator/static/media/sprite.dae48b3cbf15bcbc17b72e69d619e989.svg",
+    "static/media/help1.webp": "/To-my-creator/static/media/help1.2489ed832fed15776e83.webp",
     "index.html": "/To-my-creator/index.html",
     "main.c3d5249d.css.map": "/To-my-creator/static/css/main.c3d5249d.css.map",
-    "main.34879af2.js.map": "/To-my-creator/static/js/main.34879af2.js.map"
+    "main.c934178e.js.map": "/To-my-creator/static/js/main.c934178e.js.map"
   },
   "entrypoints": [
     "static/css/main.c3d5249d.css",
-    "static/js/main.34879af2.js"
+    "static/js/main.c934178e.js"
   ]
 }
