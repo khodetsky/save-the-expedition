@@ -2,7 +2,6 @@ import {
     Background, Main, SectionContainer, TextContainer, Text, SectionTitle, ListItem,
     SectionSubtitle, NavBtnList, RegistrationBtn
 } from './Help.styled';
-import { useState } from 'react';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 import { NavigationButton } from '../../components/NavigationButton/NavigationButton';
 
