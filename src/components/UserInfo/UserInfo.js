@@ -1,7 +1,7 @@
 import {
     ButtonStyled, UserButtonArrow, UserInfoBox, LinkToProfile,
     MenuExitButton, MenuBackdrop, MenuTriangleBox, UserButtonIcon
-} from './UserInfo.styled'
+} from './UserInfo.styled';
 import { useState } from 'react';
 import svgSprite from '../../images/sprite.svg';
 import { signOut } from "firebase/auth";
@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUserName } from '../../redux/selectors';
 import { setUserId } from '../../redux/userSlice';
 import { useLocation, useNavigate } from "react-router-dom";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const UserInfo = () => {
     const dispatch = useDispatch();
@@ -18,16 +19,27 @@ export const UserInfo = () => {
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const userName = useSelector(getUserName);
 
+    const initNotifixParams = {
+        position: 'center-top',
+        distance: '40px',
+        timeout: 3000,
+        fontSize: '15px',
+        width: '320px',
+        pauseOnHover: true,
+    };
 
     function onExitBtnClick() {
-        signOut(auth).then(() => {
-            dispatch(setUserId(null));
-            if (location.pathname === "/profile") {
-                navigate("/", { replace: true });
-            }
-        }).catch((error) => {
-          console.log(error)
-        });
+        signOut(auth)
+            .then(() => {
+                dispatch(setUserId(null));
+                Notify.info('Ви вийшли зі свого аккаунту.', initNotifixParams);
+                if (location.pathname === "/profile") {
+                    navigate("/", { replace: true });
+                }
+            })
+            .catch((error) => {
+              console.log(error)
+            });
     }
     
 
@@ -48,7 +60,7 @@ export const UserInfo = () => {
     return (
         <>
             <ButtonStyled type="button" onClick={handleButtonClick}>
-                {userName}
+                {userName || 'anonimus'}
                 <UserButtonArrow>
                     {menuIsOpen ? <UserButtonIcon href={svgSprite + '#errow-up'}></UserButtonIcon>
                     : <UserButtonIcon href={svgSprite + '#errow-down'}></UserButtonIcon>}

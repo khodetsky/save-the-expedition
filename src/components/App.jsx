@@ -6,8 +6,7 @@ import { Play } from '../pages/Play/Play';
 import { Help } from '../pages/Help/Help';
 import { Profile } from '../pages/Profile/Profile';
 import { Game } from '../components/Game/Game';
-// import { createBrowserRouter } from 'react-router-dom';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { auth, writeUserGuessedWordsInState, writeUserPointsInState, writeUserNameInState } from '../firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useSelector, useDispatch } from "react-redux";
@@ -18,12 +17,24 @@ import { setUserId, setUserName, setUserPoints, setUserGuessedWord } from '../re
 export const App = () => {
   const dispatch = useDispatch();
   const userId = useSelector(getUserId);
+  const [autorizationModalIsOpen, setAutorizationModalIsOpen] = useState(false);
+  const [modalType, setModalType] = useState(null);
+  const [modalPosition, setModalPosition] = useState(null);
+
+ 
+  function openAutorizationModal() {
+    setAutorizationModalIsOpen(true);
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeAutorizationModal() {
+    setAutorizationModalIsOpen(false);
+    document.body.style.overflow = "";
+  }
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
       dispatch(setUserId(user.uid))
-    } else {
-      console.log('user not found')
     }
   });
 
@@ -42,10 +53,10 @@ export const App = () => {
      <>
        <GlobalStyle />
        <Routes>
-         <Route path="/" element={<SharedLayout />}>
+         <Route path="/" element={<SharedLayout setModalPosition={setModalPosition} modalPosition={modalPosition} setModalType={setModalType} modalType={modalType} modalIsOpen={autorizationModalIsOpen} openAutorizationModal={openAutorizationModal} closeAutorizationModal={closeAutorizationModal} />}>
            <Route index element={<Main />} />
            <Route path="play" element={<Play />} />
-           <Route path="help" element={<Help />} />
+           <Route path="help" element={<Help setModalPosition={setModalPosition} setModalType={setModalType} openAutorizationModal={openAutorizationModal} />} />
            <Route path="profile" element={<Profile />} />
            <Route path="/play/:category" element={<Game />} />
          </Route>

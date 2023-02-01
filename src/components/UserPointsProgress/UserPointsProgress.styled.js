@@ -56,3 +56,13 @@ ${({content}) => {
     font-size: 18px;
     line-height: 22px;
 `
+
+export const ProgressText = styled.p`
+    font-family: 'Raleway', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+
+    color: #7a7a87;
+    margin-bottom: 10px;
+`

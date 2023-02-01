@@ -53,28 +53,6 @@ export const RightSideContainer = styled.div`
     color: #7a7a87;
 `
 
-export const UserLevelBox = styled.div`
-    position: absolute;
-    top: -20px;
-    left: 100px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: black;
-    background-color: yellow;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 22px;
-
-    width: 40px;
-    height: 40px;
-    border: 2px solid black;
-    border-radius: 100%;
-`
-
 export const ImageContainer = styled.div`
     background-color: #7a7a87;
 

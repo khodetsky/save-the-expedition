@@ -10,7 +10,7 @@ export const FormHeader = styled.h2`
 
 export const FormText = styled.p`
     font-family: 'Raleway', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.25;
     margin-top: 5px;
     color: #475467;

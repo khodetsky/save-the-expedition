@@ -1,38 +1,30 @@
-import { ProgressContainer, Progress, ProgressDataContainer, ProgressValueContainer } from './UserPointsProgress.styled';
+import { ProgressContainer, Progress, ProgressDataContainer, ProgressValueContainer, ProgressText } from './UserPointsProgress.styled';
 
-export const UserPointsProgress = ({ points, level }) => {
-    let frames;
-    switch (level) {
-        case 1:
-            frames = 2000;
-            break;
-        case 2:
-            frames = 5000;
-            break;
-        case 3:
-            frames = Infinity;
-            break;
-        default:
-    }
+export const UserPointsProgress = ({ points }) => {
+    const targetPoints = 5000;
+    const memoryProcents = (points * 100) / targetPoints;
 
     return (
         <ProgressContainer>
-            {frames === Infinity
+            {points >= targetPoints
                 ? <>
+                    <ProgressText>Відновлено всю пам'ять</ProgressText>
                     <ProgressValueContainer>
                         <Progress max="100" value={100}></Progress>
                     </ProgressValueContainer >
                     <ProgressDataContainer content={"center"}>
                         <p>{points}</p>
                     </ProgressDataContainer>
+                    
                   </>
                 : <>
-                    <ProgressValueContainer progress={(points * 100) / frames}>
-                        <Progress max="100" value={(points * 100) / frames}></Progress>
+                    <ProgressText>Відновлено {memoryProcents.toFixed(1)}% пам'яті</ProgressText>
+                    <ProgressValueContainer progress={memoryProcents}>
+                        <Progress max="100" value={memoryProcents}></Progress>
                     </ProgressValueContainer>
                     <ProgressDataContainer content={"space-between"}>
                         <p>{points}</p>
-                        <p>{frames}</p>
+                        <p>{targetPoints}</p>
                     </ProgressDataContainer>
                   </>
             }

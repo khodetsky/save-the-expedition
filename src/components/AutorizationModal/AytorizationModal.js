@@ -1,27 +1,25 @@
 import { AutorBackdrop, AutorModalStyled, AutorModalCloseBtn, AutorModalCloseBtnIcon, AutorModalCloseBtnSymbol } from './AutorizationModal.styled';
-import { useState } from 'react';
 import { SignInForm } from '../SignInForm/SignInForm';
 import { SignUpForm } from '../SignUpForm/SignUpForm';
 import exitIcon from '../../images/sprite.svg'
 
-export const AutorizationModal = ({ closeModal }) => {
-    const [typeOfForm, setTypeOfForm] = useState('signIn'); 
+export const AutorizationModal = ({ modalPosition, setModalType, closeModal, modalType }) => {
 
     function toggleTypeOfForm() {
-        if (typeOfForm === 'signIn') {
-            setTypeOfForm('signUp')
-        } else if (typeOfForm === 'signUp') {
-            setTypeOfForm('signIn')
+        if (modalType === 'signIn') {
+            setModalType('signUp')
+        } else if (modalType === 'signUp') {
+            setModalType('signIn')
         }
     }
 
     return (
-        <div>
+        <div style={{position: 'relative'}}>
             <AutorBackdrop onClick={closeModal}>
             </AutorBackdrop>
-            <AutorModalStyled>
-                {typeOfForm === 'signIn' && <SignInForm toggleTypeOfForm={toggleTypeOfForm} closeModal={closeModal} />}
-                {typeOfForm === 'signUp' && <SignUpForm toggleTypeOfForm={toggleTypeOfForm} closeModal={closeModal} />}
+            <AutorModalStyled modalPosition={modalPosition}>
+                {modalType === 'signIn' && <SignInForm toggleTypeOfForm={toggleTypeOfForm} closeModal={closeModal} />}
+                {modalType === 'signUp' && <SignUpForm toggleTypeOfForm={toggleTypeOfForm} closeModal={closeModal} />}
                 <AutorModalCloseBtn type="button" onClick={closeModal}>
                   <AutorModalCloseBtnIcon>
                     <AutorModalCloseBtnSymbol href={exitIcon + '#cross'}></AutorModalCloseBtnSymbol>

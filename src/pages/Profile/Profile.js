@@ -1,10 +1,10 @@
 import {
-    Background, Main, ProfileContainer, LeftSideContainer, RightSideContainer, UserLevelBox,
+    Background, Main, ProfileContainer, LeftSideContainer, RightSideContainer,
     ImageContainer, Icon, Checkmark, DataPointsContainer, DataText, ProfileName, DataCategoryList,
     ButtonContainer, ButtonContainerText, ComixButton, DataCategoryListItem
 } from './Profile.styled';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
-import robotImage from '../../images/robot.png';
+import robotImage from '../../images/playPage/robot.webp';
 import svgSprite from '../../images/sprite.svg';
 import { useSelector } from "react-redux";
 import { getUserPoints, getUserName, getUserCountGuessedWords } from '../../redux/selectors';
@@ -22,7 +22,6 @@ export const Profile = () => {
     const [userPoints, setUserPoints] = useState(null);
     const [userName, setUserName] = useState(null);
     const [dataAreThere, setDataAreThere] = useState(false);
-    const [userLevel, setUserLevel] = useState(1);
     const [userGuessedWords, setUserGuessedWords] = useState(null);
 
     useEffect(() => {
@@ -30,18 +29,9 @@ export const Profile = () => {
             setUserPoints(points);
             setUserName(name);
             setUserGuessedWords(guessedWords);
-            calculateUserLevel(points);
             setDataAreThere(true);
         }
     }, [points, name, guessedWords, dataAreThere]);
-
-    function calculateUserLevel(points) {
-        if (points >= 2000 && points < 5000) {
-            setUserLevel(2);
-        } else if (points >= 5000) {
-            setUserLevel(3);
-        }
-    };
 
     return (
         <Background>
@@ -51,10 +41,10 @@ export const Profile = () => {
                         <>
                             <LeftSideContainer>
                                 <ImageContainer>
-                                    <UserLevelBox>{userLevel}</UserLevelBox>
+                                    {/* <UserLevelBox>{userLevel}</UserLevelBox> */}
                                 <img src={robotImage} alt="Робот" width={240} height={240} />
                                 </ImageContainer>
-                                <UserPointsProgress points={userPoints} level={userLevel} />
+                                <UserPointsProgress points={userPoints} />
                             </LeftSideContainer>
                             <RightSideContainer>
                                 <div>
@@ -68,7 +58,7 @@ export const Profile = () => {
                                     }
                                     </DataPointsContainer>
                                     <div>
-                                        <DataText>Відгадано слів у категоріях:</DataText>
+                                        <DataText>Згадано слів у категоріях:</DataText>
                                         <DataCategoryList>
                                             <DataCategoryListItem>
                                                 Тварини: {userGuessedWords.animals} /10

@@ -7,7 +7,7 @@ import { DescriptionContainer } from '../DescriptionContainer/DescriptionContain
 import { RobotMessageContainer } from '../RobotMessageContainer/RobotMessageContainer';
 import { ButtonGrid } from '../ButtonGrid/ButtonGrid';
 import { GuessedWordContainer } from '../GuessedWordContainer/GuessedWordContainer';
-import robotImage from '../../images/robot.png';
+import robotImage from '../../images/playPage/robot.webp';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { GameResultModal } from '../GameResultModal/GameResultModal';

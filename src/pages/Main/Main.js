@@ -1,17 +1,41 @@
-import { MainImg, MainTitle, MainText, MainButtonLink, MainButton, MainStyled } from './Main.styled';
-import { PageFooter } from '../../components/PageFooter/PageFooter';
+import { FifthFrame } from "../../components/FifthFrame/FifthFrame";
+import { FirstFrame } from "../../components/FirstFrame/FirstFrame";
+import { SecondFrame } from '../../components/SecondFrame/SecondFrame';
+import { ThirdFrame } from '../../components/ThirdFrame/ThirdFrame';
+import { FourthFrame } from '../../components/FourthFrame/FourthFrame';
+import { useLayoutEffect, useRef } from 'react';
+
+import gsap from 'gsap-trial';
+import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
+import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 export const Main = () => {
+
+    const main = useRef();
+    const smoother = useRef();
+
+
+    useLayoutEffect(() => {
+        const ctx = gsap.context(() => {
+        smoother.current = ScrollSmoother.create({
+            smooth: 2, 
+            effects: true, 
+          });
+        }, main);
+        return () => ctx.revert();
+    }, []);
+    
     return (
-        <>
-            <MainImg>
-                <MainStyled>
-                    <MainTitle>Зустрітися зі своїм творцем</MainTitle>
-                    <MainText>У маленького робота-механіка є мрія -  зустрітися зі своїм творцем. Проте сам чоловік, який створив його, зараз знаходиться на космічній станції на Місяці. Щоб вони могли зустріти один одного, роботу потрібно підвищити свій рівень майсерності.</MainText>
-                    <MainButton type="button"><MainButtonLink to="/help">Як допомогти роботу?</MainButtonLink></MainButton>
-                </MainStyled>
-                <PageFooter/>
-            </MainImg>
-        </>
+            <main id="smooth-wrapper" ref={main}> 
+                <div id="smooth-content" style={{willChange: 'transform'}}>
+                    <FirstFrame />
+                    <SecondFrame />
+                    <ThirdFrame />
+                    <FourthFrame />
+                <FifthFrame />
+                </div>
+            </main> 
     )
 }

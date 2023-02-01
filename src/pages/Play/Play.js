@@ -1,8 +1,8 @@
 import { Background, LinkList, CategoryImg, LinkStyled, CategoryText, LinkListItem, Main } from './Play.styled';
-import natureImg from '../../images/nature.webp';
-import animalsImg from '../../images/animals.webp';
-import toolsImg from '../../images/tools.webp';
-import historyImg from '../../images/history.webp';
+import natureImg from '../../images/playPage/nature.webp';
+import animalsImg from '../../images/playPage/animals.webp';
+import toolsImg from '../../images/playPage/tools.webp';
+import historyImg from '../../images/playPage/history.webp';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 
 export const Play = () => {
@@ -36,7 +36,8 @@ export const Play = () => {
                     </LinkListItem>
                 </LinkList>
             </Main>
-            <PageFooter/>
+            <PageFooter />
         </Background>
+            
     )
 }

@@ -43,7 +43,7 @@ export const AutorModalStyled = styled.div`
 
     z-index: 5;
     position: absolute;
-    top: 50vh;
+    top: calc(${({ modalPosition }) => modalPosition}px + 50vh);
     left: 50%;
     transform: translate(-50%, -50%);
     animation: ${openModalOpacity} 250ms cubic-bezier(0.4, 0, 0.2, 1) forwards;

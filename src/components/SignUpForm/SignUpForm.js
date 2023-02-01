@@ -1,11 +1,11 @@
 import { Formik } from 'formik';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
     SignInFormStyled, InputContainer, InputStyled, LabelStyled,
-    ErrorMessage, FormHeader,  SignUpBtn, SignInContainer, EnterBtn
+    ErrorMessage, FormHeader,  SignUpBtn, SignInContainer, EnterBtn, FormText
 } from './SignUpForm.styled';
 import { auth, writeUserDataInDB } from '../../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-
+import { createUserWithEmailAndPassword } from 'firebase/auth';;
 
 export const SignUpForm = ({ toggleTypeOfForm, closeModal }) => {
 
@@ -15,14 +15,28 @@ export const SignUpForm = ({ toggleTypeOfForm, closeModal }) => {
         password: '',
     };
 
+    const initNotifixParams = {
+        position: 'center-top',
+        distance: '40px',
+        timeout: 3000,
+        fontSize: '15px',
+        width: '320px',
+        pauseOnHover: true,
+    };
+
     const registrationUser = ({name, email, password}, { resetForm }) => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(credentials => {
                 writeUserDataInDB(credentials.user.uid, name, email);
+                Notify.success(`Ви успішно зареєструвалися! Вашого робота звуть ${name}`, initNotifixParams);
                 closeModal();
                 resetForm();
             })
-            .catch(e => console.error(e));
+            .catch(e => {
+                if (e.message === 'Firebase: Error (auth/email-already-exists).') {
+                  Notify.failure('Використайте іншу адресу електронної пошти! Користувач з такою вже існує.', initNotifixParams);
+                }
+            });
       
     };
 
@@ -64,6 +78,7 @@ export const SignUpForm = ({ toggleTypeOfForm, closeModal }) => {
                 {({ errors, touched }) => (
                     <>
                         <FormHeader>Реєстрація нового <br />користувача</FormHeader>
+                        <FormText>Вигадайте ім'я для вашого робота</FormText>
                         <SignInFormStyled>
                             <InputContainer>
                                 <InputStyled
@@ -74,7 +89,7 @@ export const SignUpForm = ({ toggleTypeOfForm, closeModal }) => {
                                   placeholder=" "
                                   validate={validateName}
                                 />
-                                <LabelStyled htmlFor="name">Ім'я</LabelStyled>
+                                <LabelStyled htmlFor="name">Ім'я робота</LabelStyled>
                                 {errors.name && touched.name && <ErrorMessage>{errors.name}</ErrorMessage>}
                             </InputContainer>
 
