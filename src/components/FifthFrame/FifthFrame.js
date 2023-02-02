@@ -28,7 +28,7 @@ export const FifthFrame = () => {
             </BaseImage>
             <TextContainer ref={text}>
                 <Text>Частина роботів також зазнала ушкоджень, а в командувача експедицією вийшов з ладу модуль пам'яті і він забув про свою місію. Зараз йому необхідно все згадати та врятувати експедицію. Але чи вийде це у нього...</Text> 
-                <NavigationButton way={"/help"}>Як допомогти роботу?</NavigationButton>
+                <NavigationButton way={"/help"} >Як допомогти роботу?</NavigationButton>
             </TextContainer>
         </Wrapper>
     )

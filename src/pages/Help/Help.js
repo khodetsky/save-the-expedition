@@ -2,6 +2,8 @@ import {
     Background, Main, SectionContainer, TextContainer, Text, SectionTitle, ListItem,
     SectionSubtitle, NavBtnList, RegistrationBtn
 } from './Help.styled';
+import { useSelector } from "react-redux";
+import { getUserName } from '../../redux/selectors';
 import { PageFooter } from '../../components/PageFooter/PageFooter';
 import { NavigationButton } from '../../components/NavigationButton/NavigationButton';
 
@@ -14,6 +16,7 @@ import img6 from '../../images/helpPage/help6.webp';
 import img7 from '../../images/helpPage/help7.webp';
 
 export const Help = ({ setModalPosition, setModalType, openAutorizationModal }) => {
+    const userName = useSelector(getUserName);
 
     function openAuthModal() {
         setModalPosition(window.scrollY);
@@ -79,9 +82,11 @@ export const Help = ({ setModalPosition, setModalType, openAutorizationModal }) 
                         <li>
                             <NavigationButton way={"/play"}>Грати</NavigationButton>
                         </li>
-                        <li>
-                            <RegistrationBtn type="button" onClick={openAuthModal}>Зареєструватися</RegistrationBtn>
-                        </li>
+                        {!userName && 
+                            <li>
+                                <RegistrationBtn type="button" onClick={openAuthModal}>Зареєструватися</RegistrationBtn>
+                            </li>
+                        }
                     </NavBtnList>
                 </SectionContainer>
             </Main>

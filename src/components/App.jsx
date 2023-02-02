@@ -1,6 +1,7 @@
 import { GlobalStyle } from './GlobalStyles';
 import { Routes, Route } from "react-router-dom";
 import SharedLayout from './SharedLayout/SharedLayout';
+import ScrollToTop from "./ScrollToTop";
 import { Main } from '../pages/Main/Main';
 import { Play } from '../pages/Play/Play';
 import { Help } from '../pages/Help/Help';
@@ -52,15 +53,17 @@ export const App = () => {
    return (
      <>
        <GlobalStyle />
-       <Routes>
-         <Route path="/" element={<SharedLayout setModalPosition={setModalPosition} modalPosition={modalPosition} setModalType={setModalType} modalType={modalType} modalIsOpen={autorizationModalIsOpen} openAutorizationModal={openAutorizationModal} closeAutorizationModal={closeAutorizationModal} />}>
-           <Route index element={<Main />} />
-           <Route path="play" element={<Play />} />
-           <Route path="help" element={<Help setModalPosition={setModalPosition} setModalType={setModalType} openAutorizationModal={openAutorizationModal} />} />
-           <Route path="profile" element={<Profile />} />
-           <Route path="/play/:category" element={<Game />} />
-         </Route>
-       </Routes>
+       <ScrollToTop>
+        <Routes>
+           <Route path="/" element={<SharedLayout setModalPosition={setModalPosition} modalPosition={modalPosition} setModalType={setModalType} modalType={modalType} modalIsOpen={autorizationModalIsOpen} openAutorizationModal={openAutorizationModal} closeAutorizationModal={closeAutorizationModal} />}>
+            <Route index element={<Main />} />
+            <Route path="play" element={<Play />} />
+            <Route path="help" element={<Help setModalPosition={setModalPosition} setModalType={setModalType} openAutorizationModal={openAutorizationModal} />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="/play/:category" element={<Game />} />
+            </Route>
+        </Routes>
+       </ScrollToTop>
      </>
    );
  }

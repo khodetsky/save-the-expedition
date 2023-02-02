@@ -91,19 +91,19 @@ export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 290px;
+    margin-top: 280px;
     z-index: 3;
     will-change: transform;
 `
 
 export const Text = styled.p`
-    width: 900px;
+    width: 1000px;
 
     font-family: 'Raleway', sans-serif;
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
-    line-height: 44px;
+    line-height: 40px;
     text-align: center;
     color: #FFF;
 

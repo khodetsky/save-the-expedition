@@ -50,7 +50,9 @@ export const RightSideContainer = styled.div`
     // align-items: center;
 
     width: 340px;
-    color: #7a7a87;
+    // color: #7a7a87;
+    color: #000000;
+
 `
 
 export const ImageContainer = styled.div`
@@ -138,11 +140,11 @@ export const ComixButton = styled.button`
     font-size: 20px;
     line-height: 22px;
 
-    background-color: #E93A7D;
-    color: #FFFFFF;
+    background-color: #38bddb;
+    color: #000000;
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover, :focus {
-        color: black;
+        background-color: #29a0bb;
     }
 `

@@ -49,7 +49,7 @@ ${({content}) => {
     width: 230px;
     display: flex;
     // justify-content: space-between;
-    color: #7a7a87;
+    color: #000000;
 
     font-family: 'Raleway', sans-serif;
     font-weight: normal;
@@ -63,6 +63,6 @@ export const ProgressText = styled.p`
     font-size: 18px;
     line-height: 22px;
 
-    color: #7a7a87;
+    color: #000000;
     margin-bottom: 10px;
 `

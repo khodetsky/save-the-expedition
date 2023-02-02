@@ -9,6 +9,7 @@ import svgSprite from '../../images/sprite.svg';
 import { useSelector } from "react-redux";
 import { getUserPoints, getUserName, getUserCountGuessedWords } from '../../redux/selectors';
 import { useState, useEffect } from "react";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { UserPointsProgress } from '../../components/UserPointsProgress/UserPointsProgress';
 
 
@@ -18,11 +19,19 @@ export const Profile = () => {
     const name = useSelector(getUserName);
     const guessedWords = useSelector(getUserCountGuessedWords);
 
-
     const [userPoints, setUserPoints] = useState(null);
     const [userName, setUserName] = useState(null);
     const [dataAreThere, setDataAreThere] = useState(false);
     const [userGuessedWords, setUserGuessedWords] = useState(null);
+
+    const initNotifixParams = {
+      position: 'center-top',
+      distance: '40px',
+      timeout: 3000,
+      fontSize: '15px',
+      width: '320px',
+      pauseOnHover: true,
+    };
 
     useEffect(() => {
         if (points !== null && name !== null && guessedWords.animals !== null && !dataAreThere) {
@@ -32,6 +41,10 @@ export const Profile = () => {
             setDataAreThere(true);
         }
     }, [points, name, guessedWords, dataAreThere]);
+
+    function comixBtnClick() {
+        Notify.warning('Кінець історії ще знаходиться у розробці. Пробачте за незручності.', initNotifixParams);
+    }
 
     return (
         <Background>
@@ -96,8 +109,8 @@ export const Profile = () => {
                                     </div>
                                 </div>
                                 <ButtonContainer>
-                                    {(userPoints >= 5000 && userGuessedWords.tools >= 10 && userGuessedWords.geography >= 10 && userGuessedWords.animals >= 10)
-                                        ? <ComixButton type='button'>Переглянути комікс</ComixButton>
+                                    {(userPoints >= 5000 && userGuessedWords.tools >= 10 && userGuessedWords.geography >= 10 && userGuessedWords.animals >= 10 && userGuessedWords.history >= 10)
+                                        ? <ComixButton type='button' onClick={comixBtnClick}>Переглянути кінець історії</ComixButton>
                                         : <ButtonContainerText>Виконайте всі умови, щоб розблокувати фінал історії</ButtonContainerText>
                                     }
                                 </ButtonContainer>
