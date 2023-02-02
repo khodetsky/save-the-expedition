@@ -5,36 +5,35 @@ import { ThirdFrame } from '../../components/ThirdFrame/ThirdFrame';
 import { FourthFrame } from '../../components/FourthFrame/FourthFrame';
 import { useLayoutEffect, useRef } from 'react';
 
-import gsap from 'gsap-trial';
-import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-import { ScrollSmoother } from 'gsap-trial/ScrollSmoother';
-
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+window.gsap.registerPlugin(window.ScrollTrigger);
 
 export const Main = () => {
-
     const main = useRef();
-    const smoother = useRef();
+    // console.log(window)
 
+    // const listener = function (event) {
+    //     // console.log(window.scrollY)
+    //     main.current.style.cssText = `--scrollTop: ${window.scrollY}px`
+    // };
 
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-        smoother.current = ScrollSmoother.create({
-            smooth: 2, 
-            effects: true, 
-          });
-        }, main);
-        return () => ctx.revert();
-    }, []);
+    // useEffect(() => {
+    //   window.addEventListener('scroll', listener)
+        
+    //   return () => {
+    //     window.removeEventListener('scroll', listener);
+    //   };
+    // }, []);
     
+    
+
     return (
-            <main id="smooth-wrapper" ref={main}> 
-                <div id="smooth-content" style={{willChange: 'transform'}}>
+            <main ref={main}> 
+                <div style={{willChange: 'transform'}}>
                     <FirstFrame />
                     <SecondFrame />
                     <ThirdFrame />
                     <FourthFrame />
-                <FifthFrame />
+                    <FifthFrame />
                 </div>
             </main> 
     )

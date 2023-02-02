@@ -21,7 +21,6 @@ export const App = () => {
   const [autorizationModalIsOpen, setAutorizationModalIsOpen] = useState(false);
   const [modalType, setModalType] = useState(null);
   const [modalPosition, setModalPosition] = useState(null);
-
  
   function openAutorizationModal() {
     setAutorizationModalIsOpen(true);

@@ -1,6 +1,4 @@
 import { Wrapper, BaseImage, SecondLayer, FirstLayer, Shedow, ShedowBox, TextContainer, Text } from './FourthFrame.styled';
-import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-import gsap from 'gsap-trial';
 import { useEffect, useRef } from 'react';
 
 export const FourthFrame = () => {
@@ -10,26 +8,26 @@ export const FourthFrame = () => {
     const text = useRef();
 
     useEffect(() => {
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: first.current,
             start: 'top top',
             end: 'bottom top',
-            onUpdate: self => gsap.to(first.current, { y: (self.progress * 789) / 9 }),
+            onUpdate: self => window.gsap.to(first.current, { y: (self.progress * 789) / 9 }),
         });
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: mid.current,
             start: 'top top',
             end: 'bottom top',
             onUpdate: self => {
-                gsap.to(mid.current, { y: (self.progress * 789) / 3 });
-                gsap.to(text.current, { y: (self.progress * 789) / 2.5 });
+                window.gsap.to(mid.current, { y: (self.progress * 789) / 3 });
+                window.gsap.to(text.current, { y: (self.progress * 789) / 2.5 });
             },
         });
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: base.current,
             start: 'top top',
             end: 'bottom top',
-            onUpdate: self => gsap.to(base.current, { y: (self.progress * 789) / 1.6 }),
+            onUpdate: self => window.gsap.to(base.current, { y: (self.progress * 789) / 1.6 }),
         });
     }, [])
 

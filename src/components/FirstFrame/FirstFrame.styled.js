@@ -48,6 +48,7 @@ export const BaseImage = styled.div`
     height: 1042px;
 
     background-image: url(${mainImage});
+    // transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
     will-change: transform;
 `
 
@@ -60,6 +61,7 @@ export const MidLayer = styled.div`
     height: 1042px;
 
     background-image: url(${midLayer});
+    // transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
     will-change: transform;
 `
 
@@ -70,6 +72,7 @@ export const FirstLayer = styled.div`
     height: 1042px;
 
     background-image: url(${firstLayer});
+    // transform: translate3d(0, calc(var(--scrollTop) / 11), 0);
     will-change: transform;
 `
 
@@ -79,6 +82,7 @@ export const TextContainer = styled.div`
     align-items: center;
     margin-top: 150px;
     z-index: 1;
+    // transform: translate3d(0, calc(var(--scrollTop) / 1.4), 0);
     will-change: transform;
 `
 

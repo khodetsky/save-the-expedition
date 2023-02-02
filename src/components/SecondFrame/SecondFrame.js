@@ -1,6 +1,6 @@
 import { Wrapper, BaseImage, SecondLayer, ThirdLayer, FirstLayer, Shedow, ShedowBox, TextContainer, Text } from './SecondFrame.styled';
-import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-import gsap from 'gsap-trial';
+// import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
+// import gsap from 'gsap-trial';
 import { useEffect, useRef } from 'react';
 
 export const SecondFrame = () => {
@@ -11,32 +11,32 @@ export const SecondFrame = () => {
     const text = useRef();
 
     useEffect(() => {
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: first.current,
             start: 'top top',
             end: 'bottom top',
-            onUpdate: self => gsap.to(first.current, { y: (self.progress * 1048) / 9 }),
+            onUpdate: self => window.gsap.to(first.current, { y: (self.progress * 1048) / 9 }),
         });
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: second.current,
             start: 'top top',
             end: 'bottom top',
             onUpdate: self => {
-                gsap.to(second.current, { y: (self.progress * 1048) / 2.5 });
-                gsap.to(text.current, { y: (self.progress * 1042) / 2 });
+                window.gsap.to(second.current, { y: (self.progress * 1048) / 2.5 });
+                window.gsap.to(text.current, { y: (self.progress * 1042) / 2 });
             },
         });
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: third.current,
             start: 'top top',
             end: 'bottom top',
-            onUpdate: self => gsap.to(third.current, { y: (self.progress * 1048) / 2 }),
+            onUpdate: self => window.gsap.to(third.current, { y: (self.progress * 1048) / 2 }),
         });
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: base.current,
             start: 'top top',
             end: 'bottom top',
-            onUpdate: self => gsap.to(base.current, { y: (self.progress * 1048) / 1.6 }),
+            onUpdate: self => window.gsap.to(base.current, { y: (self.progress * 1048) / 1.6 }),
         });
     }, [])
 

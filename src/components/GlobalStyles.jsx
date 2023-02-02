@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: black;
+    // scroll-behavior: smooth;
   }
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

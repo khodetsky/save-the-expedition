@@ -1,6 +1,4 @@
 import { Wrapper, BaseImage, FirstLayer, Shedow, ShedowBox, TextContainer, Text } from './ThirdFrame.styled';
-import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-import gsap from 'gsap-trial';
 import { useEffect, useRef } from 'react';
 
 export const ThirdFrame = () => {
@@ -9,20 +7,20 @@ export const ThirdFrame = () => {
     const text = useRef();
 
     useEffect(() => {
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: first.current,
             start: 'top top',
             end: 'bottom top',
             onUpdate: self => {
-                gsap.to(first.current, { y: (self.progress * 1042) / 9 });
-                gsap.to(text.current, { y: (self.progress * 1042) / 2 });
+                window.gsap.to(first.current, { y: (self.progress * 1042) / 9 });
+                window.gsap.to(text.current, { y: (self.progress * 1042) / 2 });
             },
         });
-        ScrollTrigger.create({
+        window.ScrollTrigger.create({
             trigger: base.current,
             start: 'top top',
             end: 'bottom top',
-            onUpdate: self => gsap.to(base.current, { y: (self.progress * 1042) / 3 }),
+            onUpdate: self => window.gsap.to(base.current, { y: (self.progress * 1042) / 3 }),
         });
     }, [])
 
