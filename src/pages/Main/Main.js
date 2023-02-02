@@ -3,7 +3,7 @@ import { FirstFrame } from "../../components/FirstFrame/FirstFrame";
 import { SecondFrame } from '../../components/SecondFrame/SecondFrame';
 import { ThirdFrame } from '../../components/ThirdFrame/ThirdFrame';
 import { FourthFrame } from '../../components/FourthFrame/FourthFrame';
-import { useLayoutEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 window.gsap.registerPlugin(window.ScrollTrigger);
 
