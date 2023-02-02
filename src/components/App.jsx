@@ -63,7 +63,7 @@ export const App = () => {
             <Route path="/play/:category" element={<Game />} />
             </Route>
         </Routes>
-       </ScrollToTop>
+       </ScrollToTop> 
      </>
    );
  }
