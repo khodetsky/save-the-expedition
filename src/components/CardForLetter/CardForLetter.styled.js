@@ -54,15 +54,38 @@ const textAnimation = keyframes`
   0% {
     opacity: 0;
     color: #FFFFFF;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #edfa5a 0px 0px 20px, #edfa5a 0px 0px 30px, #edfa5a 0px 0px 40px, #edfa5a 0px 0px 50px, #edfa5a 0px 0px 75px;
   }
 
   40% {
       opacity: 1;
     color: #fafd4a;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #edfa5a 0px 0px 20px, #edfa5a 0px 0px 30px, #edfa5a 0px 0px 40px, #edfa5a 0px 0px 50px;
+  }
+
+  45% {
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #edfa5a 0px 0px 20px, #edfa5a 0px 0px 30px, #edfa5a 0px 0px 40px;
+  }
+  50% {
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #edfa5a 0px 0px 20px, #edfa5a 0px 0px 30px;
+  }
+  55% {
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #edfa5a 0px 0px 20px;
+  }
+  60% {
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px;
+  }
+  65% {
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px;
   }
 
   70% {
     color: #ff8100;
+    text-shadow: #FFF 0px 0px 5px;
+  }
+
+  75% {
+    text-shadow: none;
   }
 
   100% {
@@ -91,7 +114,7 @@ const flashIconScaleAnimation = keyframes`
   10% {
     transform: scale(0.2) ;
   }
-  
+
   20% {
     transform: scale(1.2) ;
   }
