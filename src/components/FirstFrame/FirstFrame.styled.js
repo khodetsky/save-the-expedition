@@ -5,6 +5,8 @@ import mainImage from '../../images/firstFrame/base-image.webp';
 import midLayer from '../../images/firstFrame/midl-layer.webp';
 import firstLayer from '../../images/firstFrame/front-layer.webp';
 
+const cubic = '0,.63,.6,.99';
+
 export const Wrapper = styled.div`
     position: relative;
     display: flex;
@@ -48,7 +50,7 @@ export const BaseImage = styled.div`
     height: 1042px;
 
     background-image: url(${mainImage});
-    // transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    transition: transform 2s cubic-bezier(${cubic});
     will-change: transform;
 `
 
@@ -61,7 +63,8 @@ export const MidLayer = styled.div`
     height: 1042px;
 
     background-image: url(${midLayer});
-    // transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -72,7 +75,8 @@ export const FirstLayer = styled.div`
     height: 1042px;
 
     background-image: url(${firstLayer});
-    // transform: translate3d(0, calc(var(--scrollTop) / 11), 0);
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -82,7 +86,8 @@ export const TextContainer = styled.div`
     align-items: center;
     margin-top: 150px;
     z-index: 1;
-    // transform: translate3d(0, calc(var(--scrollTop) / 1.4), 0);
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 

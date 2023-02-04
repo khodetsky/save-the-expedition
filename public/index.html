@@ -69,12 +69,10 @@
       })(window.location);
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
-    <!-- <script type="text/javascript" src="skrollr.min.js"></script> -->
-  <!-- 
-    https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js
-   -->
+    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -102,9 +100,9 @@
     <script>
       SmoothScroll({
         // Время скролла 400 = 0.4 секунды
-        animationTime: 2000,
+        animationTime: 700,
         // Размер шага в пикселях 
-        stepSize: 70,
+        stepSize: 50,
 
         // Дополнительные настройки:
 
@@ -120,9 +118,9 @@
 
         // Pulse (less tweakable)
         // ratio of "tail" to "acceleration"
-        pulseAlgorithm: true,
-        pulseScale: 4,
-        pulseNormalize: 1,
+        pulseAlgorithm: false,
+        // pulseScale: 4,
+        // pulseNormalize: 1,
 
         // Поддержка тачпада
         touchpadSupport: true,

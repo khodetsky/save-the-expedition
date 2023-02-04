@@ -3,6 +3,8 @@ import styled from "styled-components";
 import mainImage from '../../images/fourthFrame/base-image.webp';
 import secondLayer from '../../images/fourthFrame/second-layer.webp';
 import firstLayer from '../../images/fourthFrame/front-layer.webp';
+const cubic = '0,.63,.6,.99';
+
 
 export const Wrapper = styled.div`
     position: relative;
@@ -47,6 +49,8 @@ export const BaseImage = styled.div`
     height: 789px;
 
     background-image: url(${mainImage});
+    trtransition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -59,6 +63,8 @@ export const SecondLayer = styled.div`
     height: 789px;
 
     background-image: url(${secondLayer});
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -71,6 +77,8 @@ export const FirstLayer = styled.div`
     height: 789px;
 
     background-image: url(${firstLayer});
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -80,6 +88,8 @@ export const TextContainer = styled.div`
     align-items: center;
     margin-top: 240px;
     z-index: 3;
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 

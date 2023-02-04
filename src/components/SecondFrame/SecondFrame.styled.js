@@ -4,6 +4,8 @@ import mainImage from '../../images/secondFrame/base-image.webp';
 import thirdLayer from '../../images/secondFrame/third-layer.webp';
 import secondLayer from '../../images/secondFrame/second-layer.webp';
 import firstLayer from '../../images/secondFrame/front-layer.webp';
+const cubic = '0,.63,.6,.99';
+
 
 export const Wrapper = styled.div`
     position: relative;
@@ -48,6 +50,8 @@ export const BaseImage = styled.div`
     height: 1048px;
 
     background-image: url(${mainImage});
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -60,6 +64,7 @@ export const ThirdLayer = styled.div`
     height: 1048px;
 
     background-image: url(${thirdLayer});
+    transition: transform 2s cubic-bezier(${cubic});
     will-change: transform;
 `
 
@@ -72,6 +77,8 @@ export const SecondLayer = styled.div`
     height: 1048px;
 
     background-image: url(${secondLayer});
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -84,6 +91,8 @@ export const FirstLayer = styled.div`
     height: 1048px;
 
     background-image: url(${firstLayer});
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
@@ -93,6 +102,8 @@ export const TextContainer = styled.div`
     align-items: center;
     margin-top: 280px;
     z-index: 3;
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 

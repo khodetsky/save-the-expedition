@@ -49,21 +49,21 @@ export const App = () => {
 
     }, [userId, dispatch]);
 
-   return (
-     <>
-       <GlobalStyle />
-       <ScrollToTop>
+  return (
+    <div>
+      <GlobalStyle />
+      <ScrollToTop>
         <Routes>
-           <Route path="/" element={<SharedLayout setModalPosition={setModalPosition} modalPosition={modalPosition} setModalType={setModalType} modalType={modalType} modalIsOpen={autorizationModalIsOpen} openAutorizationModal={openAutorizationModal} closeAutorizationModal={closeAutorizationModal} />}>
+          <Route path="/" element={<SharedLayout setModalPosition={setModalPosition} modalPosition={modalPosition} setModalType={setModalType} modalType={modalType} modalIsOpen={autorizationModalIsOpen} openAutorizationModal={openAutorizationModal} closeAutorizationModal={closeAutorizationModal} />}>
             <Route index element={<Main />} />
             <Route path="play" element={<Play />} />
             <Route path="help" element={<Help setModalPosition={setModalPosition} setModalType={setModalType} openAutorizationModal={openAutorizationModal} />} />
             <Route path="profile" element={<Profile />} />
             <Route path="/play/:category" element={<Game />} />
-            </Route>
+          </Route>
         </Routes>
-       </ScrollToTop> 
-     </>
+      </ScrollToTop>
+    </div>
    );
  }
    

@@ -1,6 +1,4 @@
 import { Wrapper, BaseImage, MidLayer, FirstLayer, Shedow, ShedowBox, TextContainer, Title, Text } from './FirstFrame.styled';
-// import { ScrollTrigger } from 'gsap-trial/ScrollTrigger';
-// import gsap from 'gsap-trial';
 import { useEffect, useRef } from 'react';
 
 export const FirstFrame = () => {
@@ -8,7 +6,6 @@ export const FirstFrame = () => {
     const mid = useRef();
     const base = useRef();
     const text = useRef();
-console.log(window)
 
     useEffect(() => {
         window.ScrollTrigger.create({

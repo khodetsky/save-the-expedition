@@ -2,6 +2,9 @@ import styled from "styled-components";
 
 import mainImage from '../../images/fifthFrame/base-image.webp';
 
+const cubic = '0,.63,.6,.99';
+
+
 export const Wrapper = styled.div`
     position: relative;
     display: flex;
@@ -39,6 +42,8 @@ export const TextContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    transition: transform 2s cubic-bezier(${cubic});
+
     will-change: transform;
 `
 
