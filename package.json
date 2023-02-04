@@ -19,7 +19,6 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.4",
     "react-scripts": "5.0.1",
-    "react-smooth-scrolling": "^1.0.2",
     "styled-components": "^5.3.5",
     "styled-system": "^5.1.5",
     "web-vitals": "^2.1.3"
