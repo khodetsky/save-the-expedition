@@ -1,5 +1,6 @@
-import { Card, LeftPartCard, RightPartCard, Text, RedLine } from './CardForLetter.styled';
+import { Card, LeftPartCard, RightPartCard, Text, RedLine, FlashIcon } from './CardForLetter.styled';
 import { useEffect } from "react";
+import flashIcon from '../../images/blink-flash.svg';
 
 export const CardForLetter = ({ letter, setLettersCardArr }) => {
 
@@ -17,6 +18,7 @@ export const CardForLetter = ({ letter, setLettersCardArr }) => {
             <RightPartCard>
                 <RedLine/>
             </RightPartCard>
+            <FlashIcon src={flashIcon} alt='іконка спалаху' width={30} />
         </Card>
     )
 }

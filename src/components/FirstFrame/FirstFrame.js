@@ -41,7 +41,7 @@ export const FirstFrame = () => {
             <BaseImage ref={base}></BaseImage>
             <TextContainer ref={text}>
                 <Title>Врятувати експедицію</Title>
-                <Text>Це історія чудового робота, якому випав шанс стати гордістю людства: розпочати епоху заселення інших планет</Text>    
+                <Text>Це історія чудового робота, якому випав шанс стати гордістю людства: розпочати епоху заселення інших планет.</Text>    
             </TextContainer>
             <MidLayer ref={mid}></MidLayer>
             <FirstLayer ref={first} ></FirstLayer>

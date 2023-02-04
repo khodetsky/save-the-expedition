@@ -92,6 +92,7 @@ export const Game = () => {
                     elem.children[0].classList.add('guessed');
                     elem.children[1].classList.add('guessed');
                     elem.children[2].classList.add('guessed');
+                    elem.children[3].classList.add('guessed');
                     elem.children[0].firstElementChild.classList.add('guessed');
                     elem.children[2].firstElementChild.classList.add('guessed');
                     setGuessLetters((letters) => letters - 1);
@@ -185,14 +186,14 @@ export const Game = () => {
                                 <Timer timeLeftSec={timeLeft}/>
                             </TimerContainer>
                             <InfoGameBox>
-                            <DataGameBox>
-                                <DescriptionContainer>{guessedWordObject.description}</DescriptionContainer>
-                                <RobotMessageContainer message={robotMessage} />
-                            </DataGameBox>
-                            <BatteryBox>
-                                <img src={robotImage} alt="Робот" width={240} height={240} />
-                                <Battery batteryCharge={batteryCharge} />
-                            </BatteryBox>
+                                <DataGameBox>
+                                    <DescriptionContainer>{guessedWordObject.description}</DescriptionContainer>
+                                    <RobotMessageContainer message={robotMessage} />
+                                </DataGameBox>
+                                <BatteryBox>
+                                    <img src={robotImage} alt="Робот" width={240} height={240} />
+                                    <Battery batteryCharge={batteryCharge} />
+                                </BatteryBox>
                             </InfoGameBox>
                             <GuessedWordContainer setLettersCardArr={setLettersCardArr} guessedWord={guessedWordObject.word} />
                             <ButtonGrid handleBtnClick={handleLetterBtnClick} />

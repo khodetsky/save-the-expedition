@@ -29,8 +29,8 @@ export const InfoGameBox = styled.div`
 
 export const DataGameBox = styled.div`
     width: 60%;
-    height: 300px;
-    padding: 20px;
+    height: 240px;
+    padding: 0 20px;
 
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@ export const DataGameBox = styled.div`
 
 export const BatteryBox = styled.div`
     width: 40%;
-    height: 300px;
+    height: 240px;
 
     display: flex;
     justify-content: space-around;
@@ -80,8 +80,8 @@ export const ButtonLink = styled(Link)`
 `
 
 export const TimerContainer = styled.div`
-    padding-top: 170px;
-    padding-bottom: 10px;
+    padding-top: 130px;
+    // padding-bottom: 10px;
     padding-left: 215px;
     padding-right: 215px;
 

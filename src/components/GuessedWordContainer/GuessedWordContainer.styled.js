@@ -9,5 +9,5 @@ export const LettersList = styled.ul`
     flex-wrap: wrap;
     gap: 20px;
 
-    padding: 50px 215px;
+    padding: 20px 215px;
 `
